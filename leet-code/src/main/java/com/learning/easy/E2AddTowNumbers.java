@@ -15,10 +15,35 @@ import com.learning.domain.ListNode;
  */
 public class E2AddTowNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode resultHead = new ListNode(0);
+        ListNode p = l1;
+        ListNode q = l2;
+        ListNode current = resultHead;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = x + y + carry;
+            carry = sum / 10;
+            current.next = new ListNode(sum % 10);
+            current = current.next;
+            if (p != null) {
+                p = p.next;
+            }
+            if (q != null) {
+                q = q.next;
+            }
+        }
+        if (carry > 0) {
+            current.next = new ListNode(carry);
+        }
 
-        ListNode result = null;
+        return resultHead.next;
+    }
 
-        return result;
+    private ListNode sumListNode(int val1, int val2) {
+        int val = val1 + val2;
+        return new ListNode(val);
     }
 
 }

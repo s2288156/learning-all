@@ -1,5 +1,10 @@
 package com.learning.easy;
 
+import com.learning.domain.TreeNode;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Definition for a binary tree node.
  * <pre>
@@ -16,8 +21,11 @@ package com.learning.easy;
  */
 public class E501FindMode {
 
-    public int[] findMode() {
+    public int[] findMode(TreeNode root) {
+        Map<Integer, Integer> statistic = new HashMap<>(1024);
+        statistic.merge(root.val, 1, Integer::sum);
 
+        System.out.println(statistic.toString());
         return null;
     }
 

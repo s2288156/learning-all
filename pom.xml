@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>leet-code</module>
+        <module>jdk-resource</module>
     </modules>
 
     <parent>

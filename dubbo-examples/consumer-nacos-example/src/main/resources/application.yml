@@ -5,13 +5,15 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-
+        ephemeral: false
 dubbo:
   scan:
     base-packages: com.example
   protocol:
     name: dubbo
     port: -1
+  cloud:
+    subscribed-services: provider
 server:
   port: 20000
   servlet:

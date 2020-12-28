@@ -7,9 +7,25 @@ import java.util.HashMap;
  */
 public class HashMapTest {
     public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE);
-        HashMap<Object, Object> hashMap = new HashMap<>(Integer.MAX_VALUE);
+        System.out.println(System.currentTimeMillis());
+//        HashMap<Object, Object> hashMap = new HashMap<>(Integer.MAX_VALUE);
+        HashMap<Object, Object> hashMap = new HashMap<>(4);
 
+        System.out.println(System.currentTimeMillis());
+        hashMap.put("a", "b");
+        hashMap.put("a1", "b");
+        hashMap.put("a2", "b");
+        hashMap.put("a3", "b");
+        hashMap.put(null, "b");
+        hashMap.put("c", null);
+        System.out.println(">>>> hashMap -> " + hashMap);
+        System.out.println(System.currentTimeMillis());
+
+//        shiftOperation();
+
+    }
+
+    private static void shiftOperation() {
         // 无符号右位移运算, >>> 32 等价于 >>> 0, 等价于无变化
         System.out.println("无符号右位移运算");
         System.out.println("-1 >>> 32 = " + (-1 >>> 32));
@@ -24,7 +40,5 @@ public class HashMapTest {
         System.out.println("1 >>> 1 = " + (1 >>> 1));
         System.out.println("n = 15, i = 1; 15 - (i >>> 1) = " + (15 - (1 >>> 1)));
         System.out.println("int n = -1 >>> 15 = " + (-1 >>> 15));
-
-
     }
 }

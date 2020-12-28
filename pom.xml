@@ -7,7 +7,7 @@
     <modules>
         <module>leet-code</module>
         <module>jdk-resource</module>
-        <module>dubbo-samples</module>
+        <module>dubbo-examples</module>
     </modules>
 
     <groupId>com.learning</groupId>

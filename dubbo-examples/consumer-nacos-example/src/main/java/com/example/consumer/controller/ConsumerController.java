@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConsumerController {
 
-    @DubboReference
+    @DubboReference(check = false)
     private ProviderApi providerApi;
 
     @GetMapping("/say")

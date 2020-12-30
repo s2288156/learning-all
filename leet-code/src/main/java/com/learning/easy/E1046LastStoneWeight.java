@@ -1,6 +1,6 @@
 package com.learning.easy;
 
-import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * @author wcy
@@ -8,33 +8,23 @@ import java.util.Arrays;
 public class E1046LastStoneWeight {
     public static void main(String[] args) {
         E1046LastStoneWeight main = new E1046LastStoneWeight();
-        int[] stones = new int[]{1, 2, 3, 4, 5, 6};
 //        main.run(stones);
-    }
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
 
-    public void run(int[] stones) {
-        Integer first = null;
-        Integer second = null;
-        for (int i = 0; i < stones.length - 1; i++) {
-            for (int stone : stones) {
-                if (first == null) {
-                    first = stone;
-                } else if (second == null) {
-                    if (stone > first) {
-                        second = first;
-                        first = stone;
-                    } else {
-                        second = stone;
-                    }
-                }
-
-                if (stone > first) {
-                    second = first;
-                    first = stone;
-                } else {
-                    second = stone;
-                }
-            }
+        queue.offer(40);
+        queue.offer(4);
+        queue.offer(1);
+        queue.offer(20);
+        queue.offer(3);
+        queue.offer(5);
+        int size = queue.size();
+        System.out.println(size);
+        for (int i = 0; i < size ; i++) {
+            System.out.println(queue);
         }
+
+//        System.out.println(queue);
     }
+
+
 }

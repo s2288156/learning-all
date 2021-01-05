@@ -10,27 +10,31 @@ import com.learning.domain.ListNode;
  * @author wcy
  */
 public class LinkedList {
+
+
     public static void main(String[] args) {
         ListNode josephus = josephus();
-        System.out.println(josephus);
+
     }
 
     public static ListNode josephus() {
+        final int morePeople = 41;
         ListNode first = new ListNode(1);
         ListNode last = null;
-        for (int i = 1; i <= 41; i++) {
-            if (i == 41) {
-                last.next = first;
-            }
+        for (int i = 1; i <= morePeople; i++) {
             ListNode l = last;
             ListNode newNode = new ListNode(i, null);
             last = newNode;
             if (l == null) {
                 first.next = newNode;
+            } else if(i == morePeople) {
+                last.next = first;
             } else {
                 l.next = newNode;
             }
         }
+        System.out.println("first = " + first);
+        System.out.println("last = " + last + ", next = " + last.next);
         return first;
     }
 

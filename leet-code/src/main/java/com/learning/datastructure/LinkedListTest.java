@@ -9,7 +9,7 @@ import com.learning.domain.ListNode;
  *
  * @author wcy
  */
-public class LinkedList {
+public class LinkedListTest {
 
 
     public static void main(String[] args) {

@@ -1,7 +1,5 @@
 package com.learning.domain;
 
-import lombok.ToString;
-
 public class ListNode {
     public int val;
     public ListNode next;

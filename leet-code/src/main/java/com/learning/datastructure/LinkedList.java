@@ -13,21 +13,37 @@ public class LinkedList {
 
 
     public static void main(String[] args) {
-        ListNode josephus = josephus();
+        ListNode lifePeople = josephus();
+        for (int i = 0; i < 39; i++) {
+            lifePeople = threeKillOne(lifePeople);
+            System.out.println(lifePeople);
+        }
+        int lifeOne = lifePeople.val;
+        int lifeTwo = lifePeople.next.val;
+        System.out.printf("one = %s, two = %s%n", lifeOne, lifeTwo);
+    }
 
+    public static ListNode threeKillOne(ListNode listNode) {
+        ListNode killNext = null;
+        for (int i = 1; i < 3; i++) {
+            killNext = listNode.next;
+        }
+        ListNode life = killNext.next.next;
+        killNext.next = life;
+        return killNext.next;
     }
 
     public static ListNode josephus() {
-        final int morePeople = 41;
+        final int morePeople = 11;
         ListNode first = new ListNode(1);
         ListNode last = null;
-        for (int i = 1; i <= morePeople; i++) {
+        for (int i = 2; i <= morePeople; i++) {
             ListNode l = last;
             ListNode newNode = new ListNode(i, null);
             last = newNode;
             if (l == null) {
                 first.next = newNode;
-            } else if(i == morePeople) {
+            } else if (i == morePeople) {
                 last.next = first;
             } else {
                 l.next = newNode;
@@ -35,7 +51,7 @@ public class LinkedList {
         }
         System.out.println("first = " + first);
         System.out.println("last = " + last + ", next = " + last.next);
-        return first;
+        return last.next;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.learning.domain.linked;
+package com.learning.domain.linear;
 
 /**
  * @author wcy

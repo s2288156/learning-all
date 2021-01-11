@@ -23,10 +23,14 @@ public class MyStack<E> {
         this.length = 0;
     }
 
-    public void add(E e) {
+    public void push(E e) {
         if (length < capacity) {
             elements[length++] = e;
+            return;
         }
+        capacity *= 2;
+        elements = Arrays.copyOf(elements, capacity);
+        elements[length++] = e;
     }
 
     public E pop() {

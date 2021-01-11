@@ -8,16 +8,9 @@ import com.learning.domain.linear.MyStack;
 public class StackTest {
     public static void main(String[] args) {
         MyStack<Integer> intStack = new MyStack<>();
-        intStack.add(3);
-        intStack.add(5);
-        intStack.add(7);
+        for (int i = 0; i < 21; i++) {
+            intStack.push(i);
+        }
         System.out.println(intStack);
-        System.out.println(intStack.length());
-        System.out.println(intStack.pop());
-        System.out.println(intStack.pop());
-        System.out.println(intStack.pop());
-        System.out.println(intStack);
-        System.out.println(intStack.length());
-        System.out.println(intStack.pop());
     }
 }

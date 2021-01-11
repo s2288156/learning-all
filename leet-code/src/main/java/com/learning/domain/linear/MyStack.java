@@ -29,6 +29,17 @@ public class MyStack<E> {
         }
     }
 
+    public E pop() {
+        Object result;
+        if (length == 0) {
+            return null;
+        }
+        result = elements[length - 1];
+        elements[length - 1] = null;
+        length--;
+        return (E) result;
+    }
+
     public int length() {
         return this.length;
     }

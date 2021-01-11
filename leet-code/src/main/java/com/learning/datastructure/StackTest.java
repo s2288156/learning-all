@@ -12,5 +12,12 @@ public class StackTest {
         intStack.add(5);
         intStack.add(7);
         System.out.println(intStack);
+        System.out.println(intStack.length());
+        System.out.println(intStack.pop());
+        System.out.println(intStack.pop());
+        System.out.println(intStack.pop());
+        System.out.println(intStack);
+        System.out.println(intStack.length());
+        System.out.println(intStack.pop());
     }
 }

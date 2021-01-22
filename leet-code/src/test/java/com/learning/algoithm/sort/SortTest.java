@@ -2,6 +2,8 @@ package com.learning.algoithm.sort;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -12,7 +14,7 @@ class SortTest {
     @Test
     void bubbleSortTest() {
         Integer[] integers = {3, 7, 2, 1, 4, 9, 8, 6, 0};
-        BubbleSort<Integer> bubbleSort = new BubbleSort<>(integers);
+        BubbleSort bubbleSort = new BubbleSort(integers);
         Integer[] sort = bubbleSort.sort();
 
         assertAll(
@@ -21,5 +23,6 @@ class SortTest {
                 () -> assertEquals(9, sort[sort.length - 1])
         );
 
+        System.out.println(Arrays.toString(sort));
     }
 }

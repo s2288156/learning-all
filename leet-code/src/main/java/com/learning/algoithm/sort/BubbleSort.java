@@ -13,13 +13,8 @@ public class BubbleSort<E> implements Sort<E> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public E[] asc() {
+    public E[] sort() {
         return (E[]) elements;
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public E[] desc() {
-        return (E[]) elements;
-    }
 }

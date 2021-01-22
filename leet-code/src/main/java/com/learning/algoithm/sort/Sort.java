@@ -5,7 +5,6 @@ package com.learning.algoithm.sort;
  */
 public interface Sort<E> {
 
-    E[] asc();
+    E[] sort();
 
-    E[] desc();
 }

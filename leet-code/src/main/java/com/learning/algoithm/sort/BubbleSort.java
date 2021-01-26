@@ -3,7 +3,7 @@ package com.learning.algoithm.sort;
 /**
  * @author wcy
  */
-public class BubbleSort implements Sort {
+public class BubbleSort implements Sort<Integer> {
 
     private final Integer[] elements;
 
@@ -25,7 +25,7 @@ public class BubbleSort implements Sort {
                     elements[index] = elements[index + 1];
                     elements[index + 1] = temp;
                 }
-                // 当前小于下一位，从下一位开始往后比较
+                // 当前小于或等于下一位，从下一位开始往后比较
                 index++;
             }
             length--;

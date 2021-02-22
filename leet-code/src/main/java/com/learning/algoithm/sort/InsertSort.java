@@ -1,6 +1,11 @@
 package com.learning.algoithm.sort;
 
 /**
+ * 将数组分为两个区，已排序区和未排序区。</br>
+ * 1. 初始已排序区只有一个元素，即数组的第一个 </br>
+ * 2. 从未排序区拿取一个元素，与已排序区元素比较，插入到合适的位置，保证已排序区始终有序 </br>
+ * 可以通过程序，保证排序的稳定性
+ *
  * @author wcy
  */
 public class InsertSort implements Sort<Integer> {

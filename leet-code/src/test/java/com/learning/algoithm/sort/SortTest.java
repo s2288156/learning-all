@@ -44,4 +44,11 @@ class SortTest {
         Integer[] sort = insertSort.sort();
         assertSort(sort);
     }
+
+    @Test
+    void mergeSortTest() {
+        Sort<Integer> mergeSort = new MergeSort(integers);
+        Integer[] sort = mergeSort.sort();
+        assertSort(sort);
+    }
 }

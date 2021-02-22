@@ -1,5 +1,6 @@
 package com.learning.algoithm.sort;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author wcy
  */
+@Slf4j
 class SortTest {
     Integer[] integers;
 
     @BeforeEach
     void setUp() {
         integers = new Integer[]{3, 7, 2, 1, 4, 9, 8, 5, 6, 0};
+        log.info("排序前: {}", Arrays.toString(integers));
     }
 
     @Test
@@ -32,7 +35,7 @@ class SortTest {
                 () -> assertEquals(0, sort[0]),
                 () -> assertEquals(9, sort[sort.length - 1])
         );
-        System.out.println(Arrays.toString(sort));
+        log.info("排序后: {}", Arrays.toString(sort));
     }
 
     @Test

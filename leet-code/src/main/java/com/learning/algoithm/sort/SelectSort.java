@@ -37,14 +37,4 @@ public class SelectSort implements Sort<Integer> {
         return elements;
     }
 
-    public static void main(String[] args) {
-        int index = 0;
-        int len = 5;
-        for (int i = 0; i < len - 1; i++) {
-            for (int j = index + 1; j < len; j++) {
-                System.out.printf("i = %s, j = %s%n", i, j);
-            }
-            index++;
-        }
-    }
 }

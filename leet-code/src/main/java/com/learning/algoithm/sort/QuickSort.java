@@ -39,9 +39,9 @@ public class QuickSort implements Sort<Integer> {
         return i;
     }
 
-    private void swapArray(Integer[] srcArray, int sourceIndex, int targetIndex) {
-        int temp = srcArray[targetIndex];
-        srcArray[targetIndex] = srcArray[sourceIndex];
-        srcArray[sourceIndex] = temp;
+    private void swapArray(Integer[] srcArray, int srcPos, int destPos) {
+        int temp = srcArray[destPos];
+        srcArray[destPos] = srcArray[srcPos];
+        srcArray[srcPos] = temp;
     }
 }

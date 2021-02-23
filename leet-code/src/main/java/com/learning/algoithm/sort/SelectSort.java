@@ -36,5 +36,4 @@ public class SelectSort implements Sort<Integer> {
         }
         return elements;
     }
-
 }

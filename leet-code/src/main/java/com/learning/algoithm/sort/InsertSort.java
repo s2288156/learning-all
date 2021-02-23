@@ -53,5 +53,4 @@ public class InsertSort implements Sort<Integer> {
             elements[endMoveElementIndex - k] = elements[endMoveElementIndex - k - 1];
         }
     }
-
 }

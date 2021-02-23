@@ -1,6 +1,7 @@
 package com.learning.algoithm.sort;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,17 +17,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SortTest {
     Integer[] integers;
 
+    Sort<Integer> sort;
+
     @BeforeEach
     void setUp() {
         integers = new Integer[]{3, 7, 2, 1, 4, 8, 9, 8, 5, 6, 0};
         log.info("排序前: {}", Arrays.toString(integers));
     }
 
+    @AfterEach
+    void tearDown() {
+        assertSort(sort.sort());
+    }
+
     @Test
     void bubbleSortTest() {
-        BubbleSort bubbleSort = new BubbleSort(integers);
-        Integer[] sort = bubbleSort.sort();
-        assertSort(sort);
+        sort = new BubbleSort(integers);
+    }
+
+    @Test
+    void insertSortTest() {
+        sort = new InsertSort(integers);
+    }
+
+    @Test
+    void mergeSortTest() {
+        sort = new MergeSort(integers);
+    }
+
+    @Test
+    void selectSortTest() {
+        sort = new SelectSort(integers);
+    }
+
+    @Test
+    void quickSortTest() {
+        sort = new QuickSort(integers);
     }
 
     private void assertSort(Integer[] sort) {
@@ -45,33 +71,5 @@ class SortTest {
                 () -> assertEquals(8, sort[8]),
                 () -> assertEquals(8, sort[9])
         );
-    }
-
-    @Test
-    void insertSortTest() {
-        InsertSort insertSort = new InsertSort(integers);
-        Integer[] sort = insertSort.sort();
-        assertSort(sort);
-    }
-
-    @Test
-    void mergeSortTest() {
-        Sort<Integer> mergeSort = new MergeSort(integers);
-        Integer[] sort = mergeSort.sort();
-        assertSort(sort);
-    }
-
-    @Test
-    void selectSortTest() {
-        Sort<Integer> selectSort = new SelectSort(integers);
-        Integer[] sort = selectSort.sort();
-        assertSort(sort);
-    }
-
-    @Test
-    void quickSortTest() {
-        Sort<Integer> quickSort = new QuickSort(integers);
-        Integer[] sort = quickSort.sort();
-        assertSort(sort);
     }
 }

@@ -67,4 +67,11 @@ class SortTest {
         Integer[] sort = selectSort.sort();
         assertSort(sort);
     }
+
+    @Test
+    void quickSortTest() {
+        Sort<Integer> quickSort = new QuickSort(integers);
+        Integer[] sort = quickSort.sort();
+        assertSort(sort);
+    }
 }

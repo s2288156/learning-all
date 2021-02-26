@@ -1,7 +1,6 @@
-package com.asktao.rocketmq;
+package com.asktao.sample;
 
 import lombok.SneakyThrows;
-import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -13,7 +12,7 @@ import java.util.List;
 /**
  * @author wcy
  */
-public class ConsumerDemo {
+public class Consumer {
     @SneakyThrows
     public static void main(String[] args) {
         // 实例化消费者

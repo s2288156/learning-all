@@ -8,6 +8,7 @@
         <module>leet-code</module>
         <module>jdk-resource</module>
         <module>dubbo-examples</module>
+        <module>mq-example</module>
     </modules>
 
     <groupId>com.learning</groupId>

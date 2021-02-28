@@ -9,8 +9,10 @@ spring:
       bindings:
         output:
           destination: test-consumer-topic
-          content-type: application/json
+          content-type: text/plain # text/plain  application/json
 server:
   port: 8082
   servlet:
     context-path: /producer
+    encoding:
+      charset: UTF-8

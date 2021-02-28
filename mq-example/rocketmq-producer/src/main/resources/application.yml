@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: rocketmq-producer
+server:
+  port: 8082
+  servlet:
+    context-path: /producer

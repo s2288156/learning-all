@@ -1,6 +1,17 @@
 spring:
   application:
     name: rocketmq-consumer
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: node0.com:9876
+      bindings:
+        input:
+          destination: test-consumer-topic
+          content-type: application/json
+          group: test-group
+
 server:
   port: 8081
   servlet:

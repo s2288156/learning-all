@@ -16,8 +16,8 @@ public class MqFactory {
         return producer;
     }
 
-    public static DefaultMQPushConsumer createPushConsumer() {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("default_consumer_group");
+    public static DefaultMQPushConsumer createPushConsumer(String group) {
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group);
         consumer.setNamesrvAddr(NAMESRV_ADDR);
         return consumer;
     }

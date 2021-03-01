@@ -22,7 +22,7 @@ public class Consumer {
         consumer.setNamesrvAddr("192.168.43.129:9876");
 
         // 订阅一个或者多个Topic，以及Tag来过滤需要消费的消息
-        consumer.subscribe("TopicTest", "*");
+        consumer.subscribe("test-consumer-topic", "tag-aa");
         // 注册回调实现类来处理从broker拉取回来的消息
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override

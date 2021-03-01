@@ -7,7 +7,7 @@ spring:
         binder:
           name-server: node0.com:9876
       bindings:
-        input:
+        input1:
           destination: test-consumer-topic
           content-type: text/plain # text/plain  application/json
           group: test-group

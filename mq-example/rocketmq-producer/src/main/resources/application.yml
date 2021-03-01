@@ -1,7 +1,15 @@
 spring:
   application:
     name: rocketmq-producer
-
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: node0.com:9876
+      bindings:
+        output:
+          destination: test-consumer-topic
+          content-type: text/plain # text/plain  application/json
 server:
   port: 8082
   servlet:

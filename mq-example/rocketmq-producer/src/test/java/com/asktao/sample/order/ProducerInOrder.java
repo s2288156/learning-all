@@ -1,5 +1,6 @@
 package com.asktao.sample.order;
 
+import com.asktao.sample.MqConst;
 import com.asktao.sample.MqFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -22,13 +23,14 @@ public class ProducerInOrder {
         DefaultMQProducer producer = MqFactory.creatProducer();
         producer.start();
 
-        String[] tags = new String[]{"TagA", "TagB", "TagC"};
+        String[] tags = new String[]{MqConst.TAG_A, MqConst.TAG_B, MqConst.TAG_C};
 
         List<OrderStep> orderList = new ProducerInOrder().buildOrders();
         String datetime = LocalDateTime.now().toString();
         for (int i = 0; i < 10; i++) {
             String body = datetime + " Hello RocketMQ " + orderList.get(i);
-            Message msg = new Message("TopicTest", tags[i % tags.length], "KEY" + i, body.getBytes(StandardCharsets.UTF_8));
+            int tagIndex = i % tags.length;
+            Message msg = new Message(MqConst.TOPIC_TEST, tags[tagIndex], "KEY" + i, body.getBytes(StandardCharsets.UTF_8));
 
             SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
                 @Override

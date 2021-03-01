@@ -16,7 +16,7 @@ public class Consumer {
     @SneakyThrows
     public static void main(String[] args) {
         // 实例化消费者
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
+        DefaultMQPushConsumer consumer = MqFactory.createPushConsumer();
 
         // 设置NameServer的地址
         consumer.setNamesrvAddr("192.168.43.129:9876");

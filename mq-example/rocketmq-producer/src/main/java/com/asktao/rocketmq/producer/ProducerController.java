@@ -21,18 +21,6 @@ import java.nio.charset.StandardCharsets;
 @RestController
 public class ProducerController {
 
-//    @Autowired
-//    private MessageChannel output;
-//
-//    @GetMapping("/{msg}")
-//    public String output(@PathVariable String msg) {
-//        Map<String, Object> headers = new HashMap<>();
-//        headers.put(MessageConst.PROPERTY_TAGS, "tag-a");
-//        Message<String> message = MessageBuilder.createMessage(msg, new MessageHeaders(headers));
-//        boolean send = output.send(message);
-//        return "SEND result " + send + " : " + msg;
-//    }
-
     @Autowired
     private DefaultMQProducer producer;
 

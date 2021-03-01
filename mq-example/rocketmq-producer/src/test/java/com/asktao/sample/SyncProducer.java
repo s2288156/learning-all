@@ -11,7 +11,7 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 public class SyncProducer {
     public static void main(String[] args) throws Exception {
         // 实例化消息生产者Producer
-        DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
+        DefaultMQProducer producer = MqFactory.creatProducer();
         // 设置NameServer的地址
         producer.setNamesrvAddr("192.168.43.129:9876");
         // 启动Producer实例

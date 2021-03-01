@@ -11,7 +11,6 @@
     <packaging>pom</packaging>
 
     <modules>
-
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
     </modules>
@@ -21,6 +20,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <rocketmq-spring-boot-starter.version>2.0.2</rocketmq-spring-boot-starter.version>
     </properties>
 
 </project>

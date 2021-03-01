@@ -5,15 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
 
 /**
  * @author wcy
  */
 @Slf4j
-@EnableBinding({Source.class})
 @SpringBootApplication
 public class ProducerApplication {
     public static void main(String[] args) {

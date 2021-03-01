@@ -9,4 +9,5 @@ public class MqConst {
     public static final String TAG_A = "TagA";
     public static final String TAG_B = "TagB";
     public static final String TAG_C = "TagC";
+    public static final String TAG_N = "TagN";
 }

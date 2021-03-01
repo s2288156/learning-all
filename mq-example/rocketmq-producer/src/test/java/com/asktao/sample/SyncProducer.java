@@ -18,8 +18,8 @@ public class SyncProducer {
         producer.start();
         for (int i = 0; i < 3; i++) {
             // 创建消息，并指定Topic，Tag和消息体
-            Message msg = new Message("TopicTest" /* Topic */,
-                    "TagA" /* Tag */,
+            Message msg = new Message(MqConst.TOPIC_TEST /* Topic */,
+                    MqConst.TAG_N /* Tag */,
                     ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
             // 发送消息到一个Broker

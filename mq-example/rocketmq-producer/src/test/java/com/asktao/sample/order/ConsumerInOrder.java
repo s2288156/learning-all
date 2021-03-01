@@ -45,11 +45,11 @@ public class ConsumerInOrder {
                             msg.getQueueId(),
                             new String(msg.getBody()));
                 }
-                try {
-                    TimeUnit.SECONDS.sleep(random.nextInt(5));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    TimeUnit.SECONDS.sleep(random.nextInt(5));
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
                 return ConsumeOrderlyStatus.SUCCESS;
             }
         });

@@ -1,4 +1,4 @@
-package com.asktao.sample;
+package com.asktao.rocketmq;
 
 /**
  * @author wcy

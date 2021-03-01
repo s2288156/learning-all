@@ -8,9 +8,9 @@ spring:
           name-server: node0.com:9876
       bindings:
         input1:
-          destination: test-consumer-topic
+          destination: TopicTest
           content-type: text/plain # text/plain  application/json
-          group: test-group
+          group: default_consumer_group
 
 server:
   port: 8081

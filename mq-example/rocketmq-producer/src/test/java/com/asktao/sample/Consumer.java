@@ -1,5 +1,6 @@
 package com.asktao.sample;
 
+import com.asktao.rocketmq.MqConst;
 import lombok.SneakyThrows;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;

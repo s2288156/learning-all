@@ -1,6 +1,6 @@
 package com.asktao.sample.order;
 
-import com.asktao.sample.MqConst;
+import com.asktao.rocketmq.MqConst;
 import com.asktao.sample.MqFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

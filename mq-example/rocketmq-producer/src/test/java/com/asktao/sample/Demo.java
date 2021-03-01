@@ -1,5 +1,7 @@
 package com.asktao.sample;
 
+import com.asktao.rocketmq.MqConst;
+
 /**
  * @author wcy
  */

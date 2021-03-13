@@ -14,7 +14,6 @@ public class MergeSort implements Sort<Integer> {
     public Integer[] sort() {
         int start = 0;
         int end = elements.length - 1;
-        Integer[] temp = new Integer[elements.length];
         mergeSort(elements, start, end);
         return elements;
     }

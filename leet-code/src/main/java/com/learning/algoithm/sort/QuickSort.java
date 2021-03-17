@@ -28,10 +28,14 @@ public class QuickSort implements Sort<Integer> {
 
     private int partition(Integer[] array, int p, int r) {
         int pivot = array[r];
+        // i 为小于分区点元素的左侧数组index
+        // j 为本次待遍历的元素数组index
         int i = p;
         for (int j = p; j < r; j++) {
             if (array[j] < pivot) {
-                swapArray(array, i, j);
+                if (i != j) {
+                    swapArray(array, i, j);
+                }
                 i++;
             }
         }

@@ -1,4 +1,4 @@
-package com.learning.algoithm;
+package com.learning.algoithm.search;
 
 /**
  * @author wcy
@@ -6,7 +6,7 @@ package com.learning.algoithm;
 public class Bsearch {
 
     public static void main(String[] args) {
-        Integer[] strArrs = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] strArrs = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 8, 9};
         Bsearch bsearch = new Bsearch(strArrs);
         Integer item = 7;
 
@@ -14,19 +14,19 @@ public class Bsearch {
 
     }
 
-    private Integer[] datas;
+    private int[] datas;
 
-    public Bsearch(Integer[] datas) {
+    public Bsearch(int[] datas) {
         this.datas = datas;
     }
 
-    public int searchIndex(Integer item) {
+    public int searchIndex(int item) {
         return searchForArrays(item, 0, datas.length - 1);
     }
 
-    private int searchForArrays(Integer item, int start, int end) {
+    private int searchForArrays(int item, int start, int end) {
         int mid = (start + end) / 2;
-        if (item.equals(datas[mid])) {
+        if (item == datas[mid]) {
             return mid;
         } else if (item < datas[mid]) {
             return searchForArrays(item, start, mid - 1);

@@ -2,6 +2,9 @@ package com.learning.algoithm.search;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * @author wcy
  */
@@ -17,8 +20,17 @@ public class TestSearch {
 
     @Test
     void testBsearchFirst() {
-        BsearchFirst bsearchFirst = new BsearchFirst();
-        int bsearch = bsearchFirst.bsearch(ints, item);
-        System.out.println(bsearch);
+        BsearchPro bsearchPro = new BsearchPro();
+        int i = bsearchPro.searchFirst(ints, item);
+        System.out.println(i);
+        assertEquals(i, 7);
+    }
+
+    @Test
+    void testBsearchLast() {
+        BsearchPro bsearchPro = new BsearchPro();
+        int i = bsearchPro.searchLast(ints, item);
+        System.out.println(i);
+        assertEquals(i, 10);
     }
 }

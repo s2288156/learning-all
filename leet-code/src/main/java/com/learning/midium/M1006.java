@@ -13,27 +13,47 @@ package com.learning.midium;
  */
 public class M1006 {
     public int clumsy(int N) {
+        int original = N;
         int result = 0;
-        while (N > 4) {
-
-        }
-
-        if (N <= 4) {
-            result += compute(N);
+        if (N > 4) {
+            while (N > 0) {
+                if (result == 0) {
+                    result = compute(N, original);
+                } else {
+                    result -= compute(N, original);
+                }
+                N -= 4;
+            }
+        } else {
+            result += compute(N, original);
         }
 
         return result;
     }
 
-    private int compute(int N) {
-        if (N % 4 == 0) {
-            return N * (N - 1) / (N - 2) + (N - 3);
-        } else if (N % 4 == 3) {
-            return N * (N - 1) / (N - 2);
-        } else if (N % 4 == 2) {
-            return N * (N - 1);
+    private int compute(int N, int original) {
+        if (original < 8) {
+            if (N > 4 || N % 4 == 0) {
+                return N * (N - 1) / (N - 2) + (N - 3);
+            } else if (N % 4 == 3) {
+                return N * (N - 1) / (N - 2);
+            } else if (N % 4 == 2) {
+                return N * (N - 1);
+            } else {
+                return N;
+            }
         } else {
-            return N;
+            if (N == original) {
+                return N * (N - 1) / (N - 2) + (N - 3);
+            } else if (N > 4 || N % 4 == 0) {
+                return N * (N - 1) / (N - 2) - (N - 3);
+            } else if (N % 4 == 3) {
+                return N * (N - 1) / (N - 2);
+            } else if (N % 4 == 2) {
+                return N * (N - 1);
+            } else {
+                return N;
+            }
         }
     }
 

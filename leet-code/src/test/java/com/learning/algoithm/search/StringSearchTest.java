@@ -43,15 +43,6 @@ public class StringSearchTest {
         }
     }
 
-    class WriteChar implements Runnable {
-
-        @Override
-        public void run() {
-
-        }
-    }
-
-
     /**
      * 65-90: A-Z
      * 91-96: [\]^_`

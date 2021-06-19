@@ -18,6 +18,7 @@ public class BFSearch implements StringSearch {
         byte[] strBytes = str.getBytes();
         byte[] searchStrBytes = searchStr.getBytes();
         int loopNum = strLength - searchStrLength + 1;
+
         for (int i = 0; i <= loopNum; i++) {
             for (int j = 0; j < searchStrLength; j++) {
                 if (strBytes[i + j] != searchStrBytes[j]) {
@@ -31,20 +32,29 @@ public class BFSearch implements StringSearch {
         return -1;
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (i == 3 && j == 4) {
-                    continue;
-                }
-                log.info("i = {} , j = {}", i, j);
-            }
-        }
-    }
-
     @Override
     public int count(String str, String searchStr) {
-        return 0;
+        int strLength = str.length();
+        int searchStrLength = searchStr.length();
+        int count = 0;
+        if (strLength < searchStrLength) {
+            return count;
+        }
+        byte[] strBytes = str.getBytes();
+        byte[] searchStrBytes = searchStr.getBytes();
+        int loopNum = strLength - searchStrLength + 1;
+
+        for (int i = 0; i <= loopNum; i++) {
+            for (int j = 0; j < searchStrLength; j++) {
+                if (strBytes[i + j] != searchStrBytes[j]) {
+                    break;
+                }
+                if (j == (searchStrLength - 1)) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 }

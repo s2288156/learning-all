@@ -2,7 +2,9 @@ package com.learning.algoithm.search;
 
 import lombok.Cleanup;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedWriter;
@@ -15,6 +17,7 @@ import java.util.Random;
 /**
  * @author wcy
  */
+@Slf4j
 public class StringSearchTest {
     private final int minChar = 33;
     private final int maxChar = 126;
@@ -41,6 +44,14 @@ public class StringSearchTest {
             randomChar = random.nextInt(maxChar - minChar) + minChar;
             bufferedWriter.write((char) randomChar);
         }
+    }
+
+    @Test
+    void testBfSearchIndex() {
+        StringSearch search = new BFSearch();
+        String str = "abcdefg";
+        String searchStr = "cde";
+        Assertions.assertEquals(2, search.searchIndex(str, searchStr));
     }
 
     /**

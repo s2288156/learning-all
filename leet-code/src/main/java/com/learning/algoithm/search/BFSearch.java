@@ -21,7 +21,7 @@ public class BFSearch implements StringSearch {
         for (int i = 0; i <= loopNum; i++) {
             for (int j = 0; j < searchStrLength; j++) {
                 if (strBytes[i + j] != searchStrBytes[j]) {
-                    continue;
+                    break;
                 }
                 if (j == (searchStrLength - 1)) {
                     return i;

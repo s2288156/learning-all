@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.util.stream.Stream;
 
 /**
  * @author wcy
@@ -46,12 +50,21 @@ public class StringSearchTest {
         }
     }
 
-    @Test
-    void testBfSearchIndex() {
+    @MethodSource("testBfSearchIndexParams")
+    @ParameterizedTest
+    void testBfSearchIndex(String str, String searchStr, int index) {
+        log.warn("{}, {}, {}", str, searchStr, index);
         StringSearch search = new BFSearch();
-        String str = "abcdefg";
-        String searchStr = "cde";
-        Assertions.assertEquals(2, search.searchIndex(str, searchStr));
+        Assertions.assertEquals(index, search.searchIndex(str, searchStr));
+    }
+
+    static Stream<Arguments> testBfSearchIndexParams() {
+        return Stream.of(
+                Arguments.of("abcdefg", "cde", 2),
+                Arguments.of("abcdefg", "de", 3),
+                Arguments.of("abcdefg", "e", 4),
+                Arguments.of("abcdefg", "dddd", -1)
+        );
     }
 
     /**

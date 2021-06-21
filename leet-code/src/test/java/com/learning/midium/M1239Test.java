@@ -18,9 +18,9 @@ class M1239Test {
 
     static Stream<Arguments> testCaseParams() {
         return Stream.of(
-                Arguments.of(Collections.singletonList("abcd"), 4)
-//                Arguments.of(Arrays.asList("a", "b", "c"), 3),
-//                Arguments.of(Arrays.asList("b", "c"), 2)
+                Arguments.of(Collections.singletonList("abcd"), 4),
+                Arguments.of(Arrays.asList("b", "c"), 2),
+                Arguments.of(Arrays.asList("a", "b", "c"), 3)
         );
     }
 

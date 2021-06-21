@@ -20,7 +20,10 @@ class M1239Test {
         return Stream.of(
                 Arguments.of(Collections.singletonList("abcd"), 4),
                 Arguments.of(Arrays.asList("b", "c"), 2),
-                Arguments.of(Arrays.asList("a", "b", "c"), 3)
+                Arguments.of(Arrays.asList("a", "b", "c"), 3),
+                Arguments.of(Arrays.asList("b", "c", "abc"), 3),
+                Arguments.of(Arrays.asList("a", "b", "ab"), 2),
+                Arguments.of(Arrays.asList("b", "c", "aabc"), 2)
         );
     }
 

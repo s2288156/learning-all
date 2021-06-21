@@ -56,11 +56,10 @@ public class M1239 {
                     continue;
                 }
                 appendStr.append(jStr);
-
-                // 确认长度，保存最长的一次结果
-                int appendStrLength = appendStr.length();
-                validLength = Math.max(appendStrLength, validLength);
             }
+            // 确认长度，保存最长的一次结果
+            int appendStrLength = appendStr.length();
+            validLength = Math.max(appendStrLength, validLength);
         }
 
         return validLength;

@@ -17,6 +17,7 @@ public class M1239 {
         if (arrSize == 1) {
             return arr.get(0).length();
         }
+        // 有效最大长度，默认-1
         int validLength = -1;
         /**
          * 有效的串联：
@@ -27,38 +28,41 @@ public class M1239 {
          * 2. 重复的字符: 遍历对比
          */
         for (int i = 0; i < arrSize; i++) {
+            StringBuilder appendStr = new StringBuilder(arr.get(i));
             for (int j = i + 1; j < arrSize; j++) {
-                if (j == arrSize) {
-                    break;
-                }
-
-                boolean allBreak = false;
-                // 相加长度超过26则无效
-                String iStr = arr.get(i);
                 String jStr = arr.get(j);
-                if (iStr.length() + jStr.length() > 26) {
-                    continue;
-                }
-                // 判断是否有重复字符
-                char[] iStrChars = iStr.toCharArray();
+
+                // 判断是否有重复字符，如果重复，则跳过内层for(int j...)循环
+                boolean charRepetition = false;
+                char[] iStrChars = appendStr.toString().toCharArray();
                 char[] jStrChars = jStr.toCharArray();
                 for (char iStrChar : iStrChars) {
                     for (char jStrChar : jStrChars) {
-                        if (allBreak = (iStrChar == jStrChar)) {
+                        // 字符重复，则allBreak = true
+                        if (charRepetition = (iStrChar == jStrChar)) {
                             break;
                         }
                     }
-                    if (allBreak) {
+                    if (charRepetition) {
                         break;
                     }
                 }
+                if (charRepetition) {
+                    continue;
+                }
+
+                // 字符无重复，则进行append操作，判断长度是否超过26
+                if ((appendStr.length() + jStr.length()) > 26) {
+                    continue;
+                }
+                appendStr.append(jStr);
+
                 // 确认长度，保存最长的一次结果
-                int appendStrLength = (iStr + jStr).length();
+                int appendStrLength = appendStr.length();
                 validLength = Math.max(appendStrLength, validLength);
             }
         }
 
         return validLength;
     }
-
 }

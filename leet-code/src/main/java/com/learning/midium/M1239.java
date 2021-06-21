@@ -17,8 +17,8 @@ public class M1239 {
         if (arrSize == 1) {
             return arr.get(0).length();
         }
-        // 有效最大长度，默认-1
-        int validLength = -1;
+        // 有效最大长度，默认0
+        int validLength = 0;
         /**
          * 有效的串联：
          * 1. 无重复字符
@@ -28,10 +28,15 @@ public class M1239 {
          * 2. 重复的字符: 遍历对比
          */
         for (int i = 0; i < arrSize; i++) {
+            if (repetitionSelfInspection(arr.get(i))) {
+                continue;
+            }
             StringBuilder appendStr = new StringBuilder(arr.get(i));
             for (int j = i + 1; j < arrSize; j++) {
                 String jStr = arr.get(j);
-
+                if (repetitionSelfInspection(jStr)) {
+                    continue;
+                }
                 // 判断是否有重复字符，如果重复，则跳过内层for(int j...)循环
                 boolean charRepetition = false;
                 char[] iStrChars = appendStr.toString().toCharArray();
@@ -63,5 +68,20 @@ public class M1239 {
         }
 
         return validLength;
+    }
+
+    /**
+     * 判断是否有重复字符
+     *
+     * @return true - 包含，false - 不包含
+     */
+    private boolean repetitionSelfInspection(String str) {
+        char[] chars = str.toCharArray();
+        for (char aChar : chars) {
+            if (str.indexOf(aChar) != str.lastIndexOf(aChar)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,6 +1,5 @@
 package com.learning.midium;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,13 +11,6 @@ import java.util.List;
  * @author wcy
  */
 public class M1239 {
-
-    public static void main(String[] args) {
-        M1239 m1239 = new M1239();
-        List<String> case1 = Arrays.asList("qsedrgyj");
-        List<String> case2 = Arrays.asList("qsedrgyj", "abcde", "fgh", "ijk");
-    }
-
 
     public int maxLength(List<String> arr) {
         int arrSize = arr.size();
@@ -68,5 +60,5 @@ public class M1239 {
 
         return validLength;
     }
-    
+
 }

@@ -1,5 +1,6 @@
 package com.learning.midium;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,76 +13,42 @@ import java.util.List;
  */
 public class M1239 {
 
+    int ans = 0;
+
     public int maxLength(List<String> arr) {
-        int arrSize = arr.size();
-        if (arrSize == 1) {
-            return arr.get(0).length();
-        }
-        // 有效最大长度，默认0
-        int validLength = 0;
-        /**
-         * 有效的串联：
-         * 1. 无重复字符
-         *
-         * 无效的串联：
-         * 1. 相加长度超过26
-         * 2. 重复的字符: 遍历对比
-         */
-        for (int i = 0; i < arrSize; i++) {
-            if (repetitionSelfInspection(arr.get(i))) {
-                continue;
+        List<Integer> masks = new ArrayList<>();
+        for (String s : arr) {
+            int mask = 0;
+            for (int i = 0; i < s.length(); i++) {
+                int ch = s.charAt(i) - 'a';
+                // != 0 说明存在重复字符
+                if ((mask >> ch & 1) != 0) {
+                    mask = 0;
+                    break;
+                }
+                mask |= 1 << ch;
             }
-            StringBuilder appendStr = new StringBuilder(arr.get(i));
-            for (int j = i + 1; j < arrSize; j++) {
-                String jStr = arr.get(j);
-                if (repetitionSelfInspection(jStr)) {
-                    continue;
-                }
-                // 判断是否有重复字符，如果重复，则跳过内层for(int j...)循环
-                boolean charRepetition = false;
-                char[] iStrChars = appendStr.toString().toCharArray();
-                char[] jStrChars = jStr.toCharArray();
-                for (char iStrChar : iStrChars) {
-                    for (char jStrChar : jStrChars) {
-                        // 字符重复，则allBreak = true
-                        if (charRepetition = (iStrChar == jStrChar)) {
-                            break;
-                        }
-                    }
-                    if (charRepetition) {
-                        break;
-                    }
-                }
-                if (charRepetition) {
-                    continue;
-                }
-
-                // 字符无重复，则进行append操作，判断长度是否超过26
-                if ((appendStr.length() + jStr.length()) > 26) {
-                    continue;
-                }
-                appendStr.append(jStr);
+            if (mask != 0) {
+                masks.add(mask);
             }
-            // 确认长度，保存最长的一次结果
-            int appendStrLength = appendStr.length();
-            validLength = Math.max(appendStrLength, validLength);
         }
+        traceback(masks, 0, 0);
 
-        return validLength;
+        return ans;
     }
 
-    /**
-     * 判断是否有重复字符
-     *
-     * @return true - 包含，false - 不包含
-     */
-    private boolean repetitionSelfInspection(String str) {
-        char[] chars = str.toCharArray();
-        for (char aChar : chars) {
-            if (str.indexOf(aChar) != str.lastIndexOf(aChar)) {
-                return true;
-            }
+    public void traceback(List<Integer> masks, int pos, int mask) {
+        if (pos == masks.size()) {
+            ans = Math.max(ans, Integer.bitCount(mask));
+            return;
         }
-        return false;
+        // 无重复字符，mask添加字符，并进入下一层递归; 0000 & 0001 = 0000 / 0001 & 0001 = 0001
+        if ((mask & masks.get(pos)) == 0) {
+            traceback(masks, pos + 1, mask | masks.get(pos));
+        }
+
+        // 有重复字符，mask不变，进入下一层递归
+        traceback(masks, pos + 1, mask);
     }
+
 }

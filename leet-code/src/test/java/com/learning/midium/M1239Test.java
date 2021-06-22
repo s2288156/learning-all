@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,14 +25,24 @@ class M1239Test {
                 Arguments.of(Arrays.asList("b", "c", "abc"), 3),
                 Arguments.of(Arrays.asList("a", "b", "ab"), 2),
                 Arguments.of(Arrays.asList("b", "c", "aabc"), 2),
-                Arguments.of(Arrays.asList("a", "abc", "d", "de", "def"), 6), // xxxxx
-                Arguments.of(Arrays.asList("a", "b", "c", "cd", "de", "def"), 6) // xxx
+                Arguments.of(Arrays.asList("a", "abc", "d", "de", "def"), 6),
+                Arguments.of(Arrays.asList("yy", "bkhwmpbiisbldzknpm"), 0),
+                Arguments.of(Arrays.asList("a", "b", "c", "cd", "de", "def"), 6)
         );
     }
 
     @MethodSource("testCaseParams")
     @ParameterizedTest
     void maxLengthTest(List<String> arr, int expectedLength) {
+        M1239 m1239 = new M1239();
+        int length = m1239.maxLength(arr);
+        Assertions.assertEquals(expectedLength, length);
+    }
+
+    @Test
+    void maxLengthOneTest() {
+        List<String> arr = Arrays.asList("yy", "bkhwmpbiisbldzknpm");
+        int expectedLength = 0;
         M1239 m1239 = new M1239();
         int length = m1239.maxLength(arr);
         Assertions.assertEquals(expectedLength, length);

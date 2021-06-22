@@ -23,7 +23,9 @@ class M1239Test {
                 Arguments.of(Arrays.asList("a", "b", "c"), 3),
                 Arguments.of(Arrays.asList("b", "c", "abc"), 3),
                 Arguments.of(Arrays.asList("a", "b", "ab"), 2),
-                Arguments.of(Arrays.asList("b", "c", "aabc"), 2)
+                Arguments.of(Arrays.asList("b", "c", "aabc"), 2),
+                Arguments.of(Arrays.asList("a", "abc", "d", "de", "def"), 6), // xxxxx
+                Arguments.of(Arrays.asList("a", "b", "c", "cd", "de", "def"), 6) // xxx
         );
     }
 

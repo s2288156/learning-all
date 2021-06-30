@@ -1,6 +1,8 @@
 package com.learning.algoithm.search;
 
 /**
+ * 二分查找
+ *
  * @author wcy
  */
 public class Bsearch {

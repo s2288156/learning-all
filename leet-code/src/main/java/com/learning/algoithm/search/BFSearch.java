@@ -19,13 +19,16 @@ public class BFSearch implements StringSearch {
         }
         byte[] strBytes = str.getBytes();
         byte[] searchStrBytes = searchStr.getBytes();
+        // searchStr字符串滑动次数
         int loopNum = strLength - searchStrLength + 1;
 
         for (int i = 0; i <= loopNum; i++) {
             for (int j = 0; j < searchStrLength; j++) {
+                // 比较str字符是否等于searchStr字符，如果不相等，则跳过此轮比较，searchStr向后滑动一位
                 if (strBytes[i + j] != searchStrBytes[j]) {
                     break;
                 }
+                // 如果 str字符 == searchStr字符，并且此字符串为searchStr的最后一位，则表示匹配成功，返回字符串位置，搜索完成
                 if (j == (searchStrLength - 1)) {
                     return i;
                 }

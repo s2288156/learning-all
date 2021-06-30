@@ -3,6 +3,8 @@ package com.learning.algoithm.search;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * Brute Force 暴力算法
+ *
  * @author wcy
  */
 @Slf4j

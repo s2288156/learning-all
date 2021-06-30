@@ -19,7 +19,7 @@ public class BMSearch implements StringSearch {
             bc[i] = -1;
         }
         for (int i = 0; i < searchStrChars.length; i++) {
-            int ascii = (int) searchStrChars[i];
+            int ascii = searchStrChars[i];
             bc[ascii] = i;
         }
 

@@ -65,15 +65,7 @@ public class StringSearchTest {
         }
     }
 
-    // =========================================== 1.BFSearch.searchIndex Test ===============================================
-    @MethodSource("testBfSearchIndexParams")
-    @ParameterizedTest
-    void testBfSearchIndex(String str, String searchStr, int index) {
-        log.warn("{}, {}, {}", str, searchStr, index);
-        StringSearch search = new BFSearch();
-        Assertions.assertEquals(index, search.searchIndex(str, searchStr));
-    }
-
+    // =========================================== testBfSearchIndexParams ===============================================
     static Stream<Arguments> testBfSearchIndexParams() {
         return Stream.of(
                 Arguments.of("abcdefg", "cde", 2),
@@ -81,6 +73,15 @@ public class StringSearchTest {
                 Arguments.of("abcdefg", "e", 4),
                 Arguments.of("abcdefg", "dddd", -1)
         );
+    }
+
+    // =========================================== 1.BFSearch.searchIndex Test ===============================================
+    @MethodSource("testBfSearchIndexParams")
+    @ParameterizedTest
+    void testBfSearchIndex(String str, String searchStr, int index) {
+        log.warn("{}, {}, {}", str, searchStr, index);
+        StringSearch search = new BFSearch();
+        Assertions.assertEquals(index, search.searchIndex(str, searchStr));
     }
 
     @SneakyThrows
@@ -96,7 +97,7 @@ public class StringSearchTest {
         int index = search.searchIndex(str, "!.`I=ZTx.PnO+`q-1");
         stopWatch.stop();
 
-        log.info("9M txtFile, index = {}, time = {}", index, stopWatch.getTotalTimeSeconds());
+        log.info("95M txtFile, index = {}, time = {}", index, stopWatch.getTotalTimeSeconds());
     }
     // =========================================== 1.BFSearch.searchIndex Test ===============================================
 
@@ -119,4 +120,12 @@ public class StringSearchTest {
     }
 
     // =========================================== 2.BFSearch.count Test ===============================================
+
+    @MethodSource("testBfSearchIndexParams")
+    @ParameterizedTest
+    void testBMSearchIndex(String str, String searchStr, int index) {
+        log.warn("{}, {}, {}", str, searchStr, index);
+        StringSearch search = new BMSearch();
+        Assertions.assertEquals(index, search.searchIndex(str, searchStr));
+    }
 }

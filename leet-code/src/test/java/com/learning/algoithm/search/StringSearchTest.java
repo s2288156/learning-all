@@ -68,10 +68,10 @@ public class StringSearchTest {
     // =========================================== testBfSearchIndexParams ===============================================
     static Stream<Arguments> testBfSearchIndexParams() {
         return Stream.of(
-//                Arguments.of("abcdefg", "cde", 2),
-//                Arguments.of("abcdefg", "de", 3),
-//                Arguments.of("abcdefg", "e", 4),
-//                Arguments.of("abcdefg", "e", 4),
+                Arguments.of("abcdefg", "cde", 2),
+                Arguments.of("abcdefg", "de", 3),
+                Arguments.of("abcdefg", "e", 4),
+                Arguments.of("abcdefg", "e", 4),
                 Arguments.of("abaaaaaa", "baa", 1)
         );
     }

@@ -95,6 +95,7 @@ public class BMSearch implements StringSearch {
             while (leftIndex >= 0 && searchStrChars[leftIndex] == searchStrChars[searchLength - 1 - suffixLength]) {
                 leftIndex--;
                 suffixLength++;
+                // TODO: 2021/7/2 suffix数据构建有问题，待解决
                 suffix[suffixLength] = leftIndex + 1;
             }
             if (leftIndex == -1) {

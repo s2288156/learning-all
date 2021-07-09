@@ -9,6 +9,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
+ * telnet localhost 8888
+ * 输入字符，可以在控制台打印出来
+ *
  * @author wcy
  */
 public class DiscardServer {

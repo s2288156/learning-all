@@ -16,6 +16,7 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
         try {
             while (in.isReadable()) {
                 System.out.print((char) in.readByte());
+                System.out.flush();
             }
         } finally {
             ReferenceCountUtil.release(msg);

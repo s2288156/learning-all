@@ -10,6 +10,7 @@
         <module>dubbo-examples</module>
         <module>mq-example</module>
         <module>netty-examples</module>
+        <module>spring-boot-examples</module>
     </modules>
 
     <groupId>com.learning</groupId>

@@ -16,6 +16,6 @@ public class ServiceAImpl implements IServiceA {
 
     @Override
     public String saySelf() {
-        return null;
+        return "serviceA sayed: >>> ";
     }
 }

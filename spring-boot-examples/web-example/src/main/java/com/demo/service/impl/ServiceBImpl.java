@@ -16,6 +16,6 @@ public class ServiceBImpl implements IServiceB {
 
     @Override
     public String saySelf() {
-        return null;
+        return "serviceB sayed: >> ";
     }
 }

@@ -11,6 +11,7 @@
         <module>mq-example</module>
         <module>netty-examples</module>
         <module>spring-boot-examples</module>
+        <module>design-mode</module>
     </modules>
 
     <groupId>com.learning</groupId>

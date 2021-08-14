@@ -1,4 +1,4 @@
-package com.design.delegate;
+package com.design.strategy.duck;
 
 /**
  * @author wuyang

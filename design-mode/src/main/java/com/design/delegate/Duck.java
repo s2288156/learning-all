@@ -4,9 +4,9 @@ package com.design.delegate;
  * @author wuyang
  */
 public abstract class Duck {
-    private FlyBehavior flyBehavior;
+    FlyBehavior flyBehavior;
 
-    private QuackBehavior quackBehavior;
+    QuackBehavior quackBehavior;
 
     public Duck() {
     }

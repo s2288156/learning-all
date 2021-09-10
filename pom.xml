@@ -6,7 +6,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>leet-code</module>
-        <module>jdk-resource</module>
         <module>dubbo-examples</module>
         <module>mq-example</module>
         <module>netty-examples</module>

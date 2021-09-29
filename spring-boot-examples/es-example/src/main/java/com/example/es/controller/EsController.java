@@ -1,5 +1,7 @@
 package com.example.es.controller;
 
+import com.example.es.dto.Address;
+import com.example.es.dto.User;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
@@ -24,7 +26,12 @@ public class EsController {
     private ElasticsearchOperations elasticsearchOperations;
 
     @PostMapping("/one")
-    public String insert() {
-        return "ok";
+    public String insert(User user) {
+        Address address = new Address();
+        address.setLocation("北京");
+        address.setZipCode("100000");
+        user.setAddress(address);
+        elasticsearchRestTemplate.save(user);
+        return user.toString();
     }
 }

@@ -2,13 +2,14 @@ package com.example.es.controller;
 
 import com.example.es.dto.Address;
 import com.example.es.dto.User;
+import com.example.es.repo.UserRepository;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author wuyang
@@ -25,6 +26,9 @@ public class EsController {
     @Autowired
     private ElasticsearchOperations elasticsearchOperations;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/rest/save")
     public String restSave(User user) {
         elasticsearchRestTemplate.save(user);
@@ -33,6 +37,19 @@ public class EsController {
 
     @PostMapping("/operation/save")
     public String operationSave(User user) {
+        elasticsearchOperations.save(user);
         return user.toString();
+    }
+
+    @DeleteMapping("/rest/one")
+    public String deleteOne(String id) {
+        String delete = elasticsearchRestTemplate.delete(id, User.class);
+        return delete;
+    }
+
+    @GetMapping("/all/user")
+    public List<User> allUser() {
+        List<User> all = userRepository.findAll();
+        return all;
     }
 }

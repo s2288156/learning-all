@@ -33,4 +33,15 @@ public class User implements Serializable {
 
     @Field(name = "address")
     private Address address;
+
+    public User() {
+        initAddress();
+    }
+
+    private void initAddress() {
+        Address address = new Address();
+        address.setLocation("北京");
+        address.setZipCode("100000");
+        this.address = address;
+    }
 }

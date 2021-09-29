@@ -25,13 +25,14 @@ public class EsController {
     @Autowired
     private ElasticsearchOperations elasticsearchOperations;
 
-    @PostMapping("/one")
-    public String insert(User user) {
-        Address address = new Address();
-        address.setLocation("北京");
-        address.setZipCode("100000");
-        user.setAddress(address);
+    @PostMapping("/rest/save")
+    public String restSave(User user) {
         elasticsearchRestTemplate.save(user);
+        return user.toString();
+    }
+
+    @PostMapping("/operation/save")
+    public String operationSave(User user) {
         return user.toString();
     }
 }

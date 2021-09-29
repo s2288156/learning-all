@@ -3,6 +3,7 @@ package com.example.es.controller;
 import com.example.es.dto.Address;
 import com.example.es.dto.User;
 import com.example.es.repo.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * @author wuyang
  */
+@Slf4j
 @RequestMapping("/es")
 @RestController
 public class EsController {
@@ -31,6 +33,7 @@ public class EsController {
 
     @PostMapping("/rest/save")
     public String restSave(User user) {
+        log.warn("{}", user);
         elasticsearchRestTemplate.save(user);
         return user.toString();
     }

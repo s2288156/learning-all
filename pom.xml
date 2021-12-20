@@ -11,6 +11,7 @@
         <module>netty-examples</module>
         <module>spring-boot-examples</module>
         <module>design-mode</module>
+        <module>jdk-source-code</module>
     </modules>
 
     <groupId>com.learning</groupId>

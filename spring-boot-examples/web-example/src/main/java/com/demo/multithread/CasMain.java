@@ -35,8 +35,8 @@ public class CasMain {
         System.out.println(SIZECTL);
     }
 
-    public static void main(String[] args) {
-        CasMain casMain = new CasMain();
-        casMain.casInt();
-    }
+    // public static void main(String[] args) {
+    //     CasMain casMain = new CasMain();
+    //     casMain.casInt();
+    // }
 }

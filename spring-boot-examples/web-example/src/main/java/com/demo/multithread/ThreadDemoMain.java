@@ -6,12 +6,12 @@ import lombok.SneakyThrows;
  * @author wuyang
  */
 public class ThreadDemoMain {
-    public static void main(String[] args) {
-        ThreadDemoMain main = new ThreadDemoMain();
-//        main.useYield();
-//        main.unSecurityCount();
-
-    }
+//     public static void main(String[] args) {
+//         ThreadDemoMain main = new ThreadDemoMain();
+// //        main.useYield();
+// //        main.unSecurityCount();
+//
+//     }
 
     private int count = 0;
 

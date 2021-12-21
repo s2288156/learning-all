@@ -21,9 +21,17 @@ public class JvmController {
         while (true) {
             num++;
             if (num == Integer.MAX_VALUE) {
-                log.warn("reset num: ", num);
+                log.warn("reset num: {}", num);
                 num = 0;
             }
         }
+    }
+
+    @GetMapping("/memory/leak")
+    public String memLeak() {
+        log.warn("模拟内存泄漏");
+        ThreadLocal<Byte[]> local = new ThreadLocal<>();
+        local.set(new Byte[4096 * 1024]);
+        return "ok";
     }
 }

@@ -11,8 +11,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>rocketmq-producer</module>
-        <module>rocketmq-consumer</module>
         <module>rocketmq-common</module>
     </modules>
 

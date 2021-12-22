@@ -26,7 +26,7 @@ public class ThreadPoolController {
             10,
             0,
             TimeUnit.SECONDS,
-            new LinkedBlockingQueue<>(1024),
+            new LinkedBlockingQueue<>(16),
             Executors.defaultThreadFactory(),
             new ThreadPoolExecutor.AbortPolicy()
     );
@@ -43,7 +43,14 @@ public class ThreadPoolController {
     @GetMapping("/pool/info")
     public Map<String, Object> threadPoolInfo() {
         Map<String, Object> response = new HashMap<>();
-
+        int corePoolSize = threadPool.getCorePoolSize();
+        int poolSize = threadPool.getPoolSize();
+        int maximumPoolSize = threadPool.getMaximumPoolSize();
+        int queueSize = threadPool.getQueue().size();
+        response.put("corePoolSize", corePoolSize);
+        response.put("poolSize", poolSize);
+        response.put("maximumPoolSize", maximumPoolSize);
+        response.put("queueSize", queueSize);
         return response;
     }
 }

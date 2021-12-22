@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author WuChunYang
@@ -31,6 +28,17 @@ public class ThreadPoolController {
             new ThreadPoolExecutor.AbortPolicy()
     );
 
+    ThreadPoolExecutor fixThreadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+
+    @GetMapping("/fix_pool/dead_lock")
+    public String fixPoolDeadLock() {
+        Object lock1 = new Object();
+        Object lock2 = new Object();
+        fixThreadPool.submit(new DeadLockThread(lock1, lock2), "deadLockThread-" + new Random().nextInt());
+        fixThreadPool.submit(new DeadLockThread(lock2, lock1), "deadLockThread-" + new Random().nextInt());
+        return "ok";
+    }
+
     @GetMapping("/pool/dead_lock")
     public String deadLock() {
         Object lock1 = new Object();
@@ -43,14 +51,22 @@ public class ThreadPoolController {
     @GetMapping("/pool/info")
     public Map<String, Object> threadPoolInfo() {
         Map<String, Object> response = new HashMap<>();
-        int corePoolSize = threadPool.getCorePoolSize();
-        int poolSize = threadPool.getPoolSize();
-        int maximumPoolSize = threadPool.getMaximumPoolSize();
-        int queueSize = threadPool.getQueue().size();
-        response.put("corePoolSize", corePoolSize);
-        response.put("poolSize", poolSize);
-        response.put("maximumPoolSize", maximumPoolSize);
-        response.put("queueSize", queueSize);
+
+        Map<String, Object> pollInfo = new HashMap<>();
+        Map<String, Object> fixPollInfo = new HashMap<>();
+
+        pollInfo.put("corePoolSize", threadPool.getCorePoolSize());
+        pollInfo.put("poolSize", threadPool.getPoolSize());
+        pollInfo.put("maximumPoolSize", threadPool.getMaximumPoolSize());
+        pollInfo.put("queueSize", threadPool.getQueue().size());
+
+        fixPollInfo.put("corePoolSize", fixThreadPool.getCorePoolSize());
+        fixPollInfo.put("poolSize", fixThreadPool.getPoolSize());
+        fixPollInfo.put("maximumPoolSize", fixThreadPool.getMaximumPoolSize());
+        fixPollInfo.put("queueSize", fixThreadPool.getQueue().size());
+
+        response.put("pollInfo", pollInfo);
+        response.put("fixPollInfo", fixPollInfo);
         return response;
     }
 }

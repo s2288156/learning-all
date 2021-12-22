@@ -31,7 +31,8 @@ public class JvmController {
     public String memLeak() {
         log.warn("模拟内存泄漏");
         ThreadLocal<Byte[]> local = new ThreadLocal<>();
-        local.set(new Byte[4096 * 1024]);
+        // 1024 byte = 1kb, 1024 kb = 1 MB
+        local.set(new Byte[4 * 1024 * 1024]);
         return "ok";
     }
 }

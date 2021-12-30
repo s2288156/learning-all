@@ -10,6 +10,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 public class StreamWordCount {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(2);
         String filePath = "/home/wuyang/IdeaProjects/learning-all/flink-example/src/main/resources/words.txt";
         DataStream<String> inputDataStream = env.readTextFile(filePath);
         DataStream<Tuple2<String, Integer>> resultDataStream = inputDataStream.flatMap(new WordCount.WordContMap())
@@ -18,6 +19,6 @@ public class StreamWordCount {
 
         resultDataStream.print();
 
-        resultDataStream.executeAndCollect();
+        env.execute();
     }
 }

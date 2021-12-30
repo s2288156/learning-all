@@ -12,6 +12,7 @@
         <module>spring-boot-examples</module>
         <module>design-mode</module>
         <module>jdk-source-code</module>
+        <module>flink-example</module>
     </modules>
 
     <groupId>com.learning</groupId>
@@ -66,6 +67,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <finalName>${project.build.finalName}</finalName>
                 </configuration>

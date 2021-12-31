@@ -7,6 +7,8 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
+ * com.flink.wc.StreamWordCount
+ * --host localhost --port 7777
  * @author WuChunYang
  */
 public class StreamWordCount {

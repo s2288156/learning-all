@@ -14,7 +14,7 @@ public class SourceTestCustom {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStream<SensorReading> inputStream = env.addSource(new SensorSourceTest());
         SingleOutputStreamOperator<SensorReading> outputSteam = inputStream.keyBy(SensorReading::getId)
-                .max("temperature");
+                .maxBy("temperature");
 
         outputSteam.print();
 

@@ -13,6 +13,7 @@
         <module>design-mode</module>
         <module>jdk-source-code</module>
         <module>flink-example</module>
+        <module>design-pattern</module>
     </modules>
 
     <groupId>com.learning</groupId>

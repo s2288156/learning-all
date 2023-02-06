@@ -7,10 +7,8 @@
     <modules>
         <module>leet-code</module>
         <module>dubbo-examples</module>
-        <module>mq-example</module>
         <module>netty-examples</module>
         <module>spring-boot-examples</module>
-        <module>design-mode</module>
         <module>jdk-source-code</module>
         <module>flink-example</module>
         <module>design-pattern</module>

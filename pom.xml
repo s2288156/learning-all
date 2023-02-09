@@ -14,7 +14,7 @@
         <module>design-pattern</module>
     </modules>
 
-    <groupId>com.learning</groupId>
+    <groupId>leetcode</groupId>
     <artifactId>all</artifactId>
     <version>1.0.0</version>
 

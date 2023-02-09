@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: es
-  elasticsearch:
-    rest:
-      uris: "http://asktao.com:9200"
-      read-timeout: "10s"
-      username: elastic
-      password: 123123

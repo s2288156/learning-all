@@ -1,5 +1,6 @@
 package com.leetcode.offer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -43,6 +44,18 @@ public class FindNumberIn2DArray {
                 {}
         };
         FindNumberIn2DArray find = new FindNumberIn2DArray();
-        System.out.println(find.findNumberIn2DArray(matrix, 20));
+        Assertions.assertFalse(find.findNumberIn2DArray(matrix, 20));
+    }
+
+    @Test
+    public void test_case2() {
+        int[][] matrix = new int[][]{
+                {1,3,5,19},
+                {2,4,7,20},
+                {3,6,9,22}
+        };
+        FindNumberIn2DArray find = new FindNumberIn2DArray();
+        Assertions.assertFalse(find.findNumberIn2DArray(matrix, 25));
+        Assertions.assertTrue(find.findNumberIn2DArray(matrix, 7));
     }
 }

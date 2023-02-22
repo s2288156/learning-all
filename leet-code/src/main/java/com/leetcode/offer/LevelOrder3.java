@@ -1,6 +1,9 @@
 package com.leetcode.offer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 剑指 Offer 32 - III. 从上到下打印二叉树 III
@@ -10,16 +13,7 @@ import java.util.*;
  * @author Wu.Chunyang
  */
 public class LevelOrder3 {
-    public static void main(String[] args) {
-        Deque<Integer> queue = new LinkedList<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        for (int i = 0; i < 4; i++) {
-            System.out.println(queue.pollLast());
-        }
-    }
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         Deque<TreeNode> queue = new LinkedList<>();
         List<List<Integer>> req = new ArrayList<>();

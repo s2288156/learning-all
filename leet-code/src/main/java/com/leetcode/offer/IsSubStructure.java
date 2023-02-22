@@ -1,5 +1,6 @@
 package com.leetcode.offer;
 
+import com.leetcode.domain.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -86,13 +87,4 @@ public class IsSubStructure {
         Assertions.assertTrue(isSubStructure.isSubStructure(nodeA1, nodeB1));
     }
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
 }

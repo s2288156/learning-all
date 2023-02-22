@@ -1,5 +1,6 @@
 package com.leetcode.offer;
 
+import com.leetcode.domain.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -81,13 +82,4 @@ public class LevelOrder {
         Assertions.assertEquals(0, orderInts.length);
     }
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
 }

@@ -1,5 +1,7 @@
 package com.leetcode.offer;
 
+import com.leetcode.domain.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,13 +33,4 @@ public class LevelOrder2 {
         return req;
     }
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
 }

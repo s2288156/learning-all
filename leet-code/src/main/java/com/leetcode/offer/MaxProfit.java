@@ -20,9 +20,9 @@ public class MaxProfit {
             return 0;
         }
         int cost = Integer.MAX_VALUE, profit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            cost = Math.min(cost, prices[i]);
-            profit = Math.max(profit, prices[i] - cost);
+        for (int price : prices) {
+            cost = Math.min(cost, price);
+            profit = Math.max(profit, price - cost);
         }
         return profit;
     }

@@ -1,37 +1,28 @@
 package com.netty.tcp;
 
-import io.netty.buffer.Unpooled;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.codec.dns.*;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Wu.Chunyang
  */
 @Slf4j
-public class TcpServerHandler extends SimpleChannelInboundHandler<DnsQuery> {
-    private static final byte[] QUERY_RESULT = new byte[]{(byte) 192, (byte) 168, 1, 1};
+public class TcpServerHandler extends ChannelInboundHandlerAdapter {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, DnsQuery msg) throws Exception {
-        DnsQuestion question = msg.recordAt(DnsSection.QUESTION);
-        log.info("Query domain: {}", question);
-        //always return 192.168.1.1
-        ctx.writeAndFlush(newResponse(msg, question, 600, QUERY_RESULT));
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        ByteBuf buf = (ByteBuf) msg;
+        log.info("@ {}", ByteBufUtil.getBytes(buf));
+        log.info("@@@ {}", buf.toString(StandardCharsets.UTF_8));
+        super.channelRead(ctx, msg);
     }
 
-    private DefaultDnsResponse newResponse(DnsQuery query,
-                                           DnsQuestion question,
-                                           long ttl, byte[]... addresses) {
-        DefaultDnsResponse response = new DefaultDnsResponse(query.id());
-        response.addRecord(DnsSection.QUESTION, question);
-
-        for (byte[] address : addresses) {
-            DefaultDnsRawRecord queryAnswer = new DefaultDnsRawRecord(
-                    question.name(),
-                    DnsRecordType.A, ttl, Unpooled.wrappedBuffer(address));
-            response.addRecord(DnsSection.ANSWER, queryAnswer);
-        }
-        return response;
+    public static void main(String[] args) {
+        System.out.println(0xab);
+        System.out.println(Integer.toHexString(14));
     }
 }

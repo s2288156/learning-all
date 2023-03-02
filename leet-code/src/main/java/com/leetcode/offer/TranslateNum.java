@@ -12,6 +12,17 @@ import org.junit.jupiter.api.Test;
 public class TranslateNum {
     public int translateNum(int num) {
         int[] nums = String.valueOf(num).chars().map(ch -> Character.digit(ch, 10)).toArray();
+        int a = 1, b = 1;
+        for (int i = 2; i <= nums.length; i++) {
+            int temp = isDoubleNum(nums, i-1) ? a + b : a;
+            b = a;
+            a = temp;
+        }
+        return a;
+        // return implFirst(nums);
+    }
+
+    private int implFirst(int[] nums) {
         int[] dp = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
             if (i == 0) {

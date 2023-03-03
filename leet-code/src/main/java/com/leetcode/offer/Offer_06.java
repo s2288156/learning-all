@@ -1,5 +1,6 @@
 package com.leetcode.offer;
 
+import com.leetcode.domain.ListNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -34,15 +35,6 @@ public class Offer_06 {
             deepNext(node.next);
         }
         temp.add(node.val);
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
     }
 
     @Test

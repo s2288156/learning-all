@@ -10,18 +10,11 @@ import com.leetcode.domain.ListNode;
  */
 public class GetIntersectionNode {
     ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode currA = headA, currB = headB;
-        while (currB != null) {
-            if (currA == currB) {
-                return currA;
-            }
-            if (currB.next == null && currA.next != null) {
-                currA = currA.next;
-                currB = headB;
-            } else {
-
-            }
+        ListNode node1 = headA, node2 = headB;
+        while (node1 != node2) {
+            node1 = node1 == null ? headB : node1.next;
+            node2 = node2 == null ? headA : node2.next;
         }
-        return null;
+        return node1;
     }
 }

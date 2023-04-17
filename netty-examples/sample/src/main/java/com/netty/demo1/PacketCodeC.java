@@ -22,4 +22,38 @@ public class PacketCodeC {
 
         return byteBuf;
     }
+
+    public Packet decode(ByteBuf byteBuf) {
+        // 跳过魔数
+        byteBuf.skipBytes(4);
+        // skip version
+        byteBuf.skipBytes(1);
+        byte serializerAlgorithm = byteBuf.readByte();
+        byte command = byteBuf.readByte();
+        int length = byteBuf.readInt();
+
+        byte[] bytes = new byte[length];
+        byteBuf.readBytes(bytes);
+
+        Class<? extends Packet> requestType = getRequestType(command);
+        Serializer serializer = getSerializer(serializerAlgorithm);
+        if (requestType != null && serializer != null) {
+            return serializer.deserializer(requestType, bytes);
+        }
+        return null;
+    }
+
+    private Class<? extends Packet> getRequestType(byte command) {
+        if (command == Command.LOGIN_REQUEST) {
+            return LoginRequestPacket.class;
+        }
+        return null;
+    }
+
+    private Serializer getSerializer(byte serializerAlgorithm) {
+        if (serializerAlgorithm == Serializer.JSON_SERIALIZER) {
+            return Serializer.DEFAULT;
+        }
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package com.netty.demo1;
 
+import com.netty.demo1.packet.LoginRequestPacket;
+import com.netty.demo1.packet.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -7,10 +9,11 @@ import io.netty.buffer.ByteBufAllocator;
  * @author Wu.Chunyang
  */
 public class PacketCodeC {
+    public static final PacketCodeC INSTANCE = new PacketCodeC();
     private static final int MAGIC_NUM = 0x12345678;
 
-    public ByteBuf encode(Packet packet) {
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
+    public ByteBuf encode(ByteBufAllocator allocator,Packet packet) {
+        ByteBuf byteBuf = allocator.buffer();
         byte[] bytes = Serializer.DEFAULT.serializer(packet);
 
         byteBuf.writeInt(MAGIC_NUM);

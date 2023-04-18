@@ -1,5 +1,6 @@
-package com.netty.demo1;
+package com.netty.demo1.packet;
 
+import com.netty.demo1.Command;
 import lombok.Data;
 
 /**

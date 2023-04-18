@@ -2,10 +2,12 @@ package com.netty.demo1.packet;
 
 import com.netty.demo1.Command;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Wu.Chunyang
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class LoginRequestPacket extends Packet {
 

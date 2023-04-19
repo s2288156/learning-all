@@ -2,6 +2,8 @@ package com.netty.demo1.client;
 
 import com.netty.demo1.PacketCodeC;
 import com.netty.demo1.packet.LoginRequestPacket;
+import com.netty.demo1.packet.LoginResponsePacket;
+import com.netty.demo1.packet.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -15,7 +17,13 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+        ByteBuf byteBuf = (ByteBuf) msg;
+        Packet packet = PacketCodeC.INSTANCE.decode(byteBuf);
+        if (packet instanceof LoginResponsePacket loginResponsePacket) {
+            if (loginResponsePacket.isSuccess()) {
+                log.info("{}", loginResponsePacket.getReason());
+            }
+        }
     }
 
     @Override

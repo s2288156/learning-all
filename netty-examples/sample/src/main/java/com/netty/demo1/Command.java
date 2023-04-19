@@ -5,4 +5,5 @@ package com.netty.demo1;
  */
 public interface Command {
     Byte LOGIN_REQUEST = 1;
+    Byte LOGIN_RESPONSE = 2;
 }

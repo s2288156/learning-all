@@ -11,7 +11,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @author Wu.Chunyang
  */
 public class DemoClient {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
@@ -22,6 +22,6 @@ public class DemoClient {
                         ch.pipeline().addLast(new ClientHandler());
                     }
                 });
-        bootstrap.connect("127.0.0.1", 8888);
+        bootstrap.connect("127.0.0.1", 8888).sync();
     }
 }

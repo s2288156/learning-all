@@ -1,5 +1,6 @@
 package com.netty.demo1;
 
+import com.netty.demo1.constants.SerializerAlgorithm;
 import com.netty.utils.JacksonUtil;
 
 /**

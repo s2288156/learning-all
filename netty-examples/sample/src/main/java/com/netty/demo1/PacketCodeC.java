@@ -1,5 +1,6 @@
 package com.netty.demo1;
 
+import com.netty.demo1.constants.Command;
 import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.LoginResponsePacket;
 import com.netty.demo1.packet.Packet;

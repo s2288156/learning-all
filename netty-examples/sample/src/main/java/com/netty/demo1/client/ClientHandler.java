@@ -3,7 +3,9 @@ package com.netty.demo1.client;
 import com.netty.demo1.PacketCodeC;
 import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.LoginResponsePacket;
+import com.netty.demo1.packet.MessageResponsePacket;
 import com.netty.demo1.packet.Packet;
+import com.netty.demo1.utils.LoginUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -22,7 +24,10 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         if (packet instanceof LoginResponsePacket loginResponsePacket) {
             if (loginResponsePacket.isSuccess()) {
                 log.info("{}", loginResponsePacket.getReason());
+                LoginUtil.markAsLogin(ctx.channel());
             }
+        } else if (packet instanceof MessageResponsePacket messageResponsePacket) {
+            log.info("收到服务端消息: {}", messageResponsePacket.getMessage());
         }
     }
 

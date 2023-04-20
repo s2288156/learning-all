@@ -43,13 +43,15 @@ public class DemoClient {
 
     private static void startConsoleTread(Channel channel) {
         new Thread(() -> {
-            while (!Thread.interrupted() && LoginUtil.hasLogin(channel)) {
-                log.info("输入消息发送至服务端: ");
-                Scanner scanner = new Scanner(System.in);
-                String line = scanner.nextLine();
-                MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                messageRequestPacket.setMessage(line);
-                channel.writeAndFlush(PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket));
+            while (!Thread.interrupted()) {
+                if (LoginUtil.hasLogin(channel)) {
+                    log.info("输入消息发送至服务端: ");
+                    Scanner scanner = new Scanner(System.in);
+                    String line = scanner.nextLine();
+                    MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+                    messageRequestPacket.setMessage(line);
+                    channel.writeAndFlush(PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket));
+                }
             }
         }).start();
     }

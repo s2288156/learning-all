@@ -1,9 +1,7 @@
 package com.netty.demo1;
 
 import com.netty.demo1.constants.Command;
-import com.netty.demo1.packet.LoginRequestPacket;
-import com.netty.demo1.packet.LoginResponsePacket;
-import com.netty.demo1.packet.Packet;
+import com.netty.demo1.packet.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -49,10 +47,15 @@ public class PacketCodeC {
     }
 
     private Class<? extends Packet> getRequestType(byte command) {
+
         if (command == Command.LOGIN_REQUEST) {
             return LoginRequestPacket.class;
         } else if (command == Command.LOGIN_RESPONSE) {
             return LoginResponsePacket.class;
+        } else if (command == Command.MESSAGE_REQUEST) {
+            return MessageRequestPacket.class;
+        } else if (command == Command.MESSAGE_RESPONSE) {
+            return MessageResponsePacket.class;
         }
         return null;
     }

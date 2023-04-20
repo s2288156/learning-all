@@ -1,6 +1,8 @@
 package com.netty.demo1.client;
 
 import com.netty.demo1.PacketCodeC;
+import com.netty.demo1.coder.PacketDecoder;
+import com.netty.demo1.coder.PacketEncoder;
 import com.netty.demo1.packet.MessageRequestPacket;
 import com.netty.demo1.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
@@ -29,7 +31,11 @@ public class DemoClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ClientHandler());
+                        ch.pipeline()
+                                .addLast(new PacketDecoder())
+                                .addLast(new LoginResponseHandler())
+                                .addLast(new MessageResponseHandler())
+                                .addLast(new PacketEncoder());
                     }
                 });
         bootstrap.connect("127.0.0.1", 8888)

@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author Wu.Chunyang
  */
+@Deprecated
 @Slf4j
 public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override

@@ -1,10 +1,8 @@
 package com.netty.demo1.client;
 
-import com.netty.demo1.PacketCodeC;
 import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.LoginResponsePacket;
 import com.netty.demo1.utils.LoginUtil;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;

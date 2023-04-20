@@ -1,5 +1,7 @@
 package com.netty.demo1.server;
 
+import com.netty.demo1.coder.PacketDecoder;
+import com.netty.demo1.coder.PacketEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -20,7 +22,11 @@ public class DemoServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ServerHandler());
+                        ch.pipeline()
+                                .addLast(new PacketDecoder())
+                                .addLast(new LoginRequestHandler())
+                                .addLast(new MessageRequestHandler())
+                                .addLast(new PacketEncoder());
                     }
                 });
 

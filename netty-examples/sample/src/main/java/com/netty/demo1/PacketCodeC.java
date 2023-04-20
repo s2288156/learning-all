@@ -12,6 +12,16 @@ public class PacketCodeC {
     public static final PacketCodeC INSTANCE = new PacketCodeC();
     private static final int MAGIC_NUM = 0x12345678;
 
+    public void encode(ByteBuf byteBuf, Packet packet) {
+        byte[] bytes = Serializer.DEFAULT.serializer(packet);
+        byteBuf.writeInt(MAGIC_NUM);
+        byteBuf.writeByte(packet.getVersion());
+        byteBuf.writeByte(Serializer.DEFAULT.getSerializerAlgorithm());
+        byteBuf.writeByte(packet.getCommand());
+        byteBuf.writeInt(bytes.length);
+        byteBuf.writeBytes(bytes);
+    }
+
     public ByteBuf encode(ByteBufAllocator allocator,Packet packet) {
         ByteBuf byteBuf = allocator.buffer();
         byte[] bytes = Serializer.DEFAULT.serializer(packet);

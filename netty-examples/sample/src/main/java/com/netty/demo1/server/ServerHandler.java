@@ -1,9 +1,7 @@
 package com.netty.demo1.server;
 
 import com.netty.demo1.PacketCodeC;
-import com.netty.demo1.packet.LoginRequestPacket;
-import com.netty.demo1.packet.LoginResponsePacket;
-import com.netty.demo1.packet.Packet;
+import com.netty.demo1.packet.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -32,6 +30,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }
             ByteBuf response = PacketCodeC.INSTANCE.encode(ctx.alloc(), loginResponsePacket);
             ctx.channel().writeAndFlush(response);
+        } else if (packet instanceof MessageRequestPacket messageRequestPacket) {
+            log.info("收到客户端消息: {}", messageRequestPacket.getMessage());
+
+            MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
+            messageResponsePacket.setMessage("服务端回复【" + messageRequestPacket.getMessage() + "】");
+
+            ctx.channel().writeAndFlush(PacketCodeC.INSTANCE.encode(ctx.alloc(), messageResponsePacket));
         }
     }
 

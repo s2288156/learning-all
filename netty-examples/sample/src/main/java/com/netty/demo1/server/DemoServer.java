@@ -25,6 +25,7 @@ public class DemoServer {
                         ch.pipeline()
                                 .addLast(new PacketDecoder())
                                 .addLast(new LoginRequestHandler())
+                                .addLast(new AuthHandler())
                                 .addLast(new MessageRequestHandler())
                                 .addLast(new PacketEncoder());
                     }

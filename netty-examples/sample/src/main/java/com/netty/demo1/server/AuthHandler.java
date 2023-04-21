@@ -14,7 +14,8 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (LoginUtil.hasLogin(ctx.channel())) {
             log.info("认证成功.");
-            ctx.pipeline().remove(this);
+            ctx.channel().pipeline().remove(this);
+            // ctx.pipeline().remove(this);
             super.channelRead(ctx, msg);
         } else {
             log.info("认证失败, 关闭连接.");

@@ -3,7 +3,9 @@ package com.netty.demo1.client;
 import com.netty.demo1.PacketCodeC;
 import com.netty.demo1.coder.PacketDecoder;
 import com.netty.demo1.coder.PacketEncoder;
+import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.MessageRequestPacket;
+import com.netty.demo1.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -15,6 +17,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Wu.Chunyang
@@ -48,15 +51,32 @@ public class DemoClient {
     private static void startConsoleTread(Channel channel) {
         new Thread(() -> {
             while (!Thread.interrupted()) {
-                // if (LoginUtil.hasLogin(channel)) {
-                log.info("输入消息发送至服务端: ");
-                Scanner scanner = new Scanner(System.in);
-                String line = scanner.nextLine();
-                MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                messageRequestPacket.setMessage(line);
-                channel.writeAndFlush(PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket));
-                // }
+                if (!LoginUtil.hasLogin(channel)) {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("请输入用户名登录: ");
+                    String username = scanner.nextLine();
+                    LoginRequestPacket login = new LoginRequestPacket();
+                    login.setUsername(username);
+                    login.setPassword("pwd");
+                    channel.writeAndFlush(login);
+                    waitResponse();
+                } else {
+                    log.info("输入消息发送至服务端: ");
+                    Scanner scanner = new Scanner(System.in);
+                    String line = scanner.nextLine();
+                    MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+                    messageRequestPacket.setMessage(line);
+                    channel.writeAndFlush(PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket));
+                }
             }
         }).start();
+    }
+
+    private static void waitResponse() {
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

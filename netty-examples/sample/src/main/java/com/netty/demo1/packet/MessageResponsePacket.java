@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class MessageResponsePacket extends Packet {
 
+    private Integer fromUserId;
     private String message;
 
     @Override

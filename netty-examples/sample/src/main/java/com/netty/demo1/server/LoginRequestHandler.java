@@ -2,7 +2,9 @@ package com.netty.demo1.server;
 
 import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.LoginResponsePacket;
+import com.netty.demo1.packet.Session;
 import com.netty.demo1.utils.LoginUtil;
+import com.netty.demo1.utils.SessionUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +20,12 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         loginResponsePacket.setVersion(msg.getVersion());
         if (valid(msg)) {
             log.info("登录验证通过: {}", msg);
+            Session session = SessionUtil.newSession(msg.getUsername());
+            SessionUtil.bindSession(session, ctx.channel());
             LoginUtil.markAsLogin(ctx.channel());
+            loginResponsePacket.setUserId(session.getUserId());
             loginResponsePacket.setSuccess(true);
-            loginResponsePacket.setReason("登录成功.");
+            loginResponsePacket.setReason(session.getUserId() + " 登录成功.");
         } else {
             log.warn("登录验证失败.");
             loginResponsePacket.setSuccess(false);

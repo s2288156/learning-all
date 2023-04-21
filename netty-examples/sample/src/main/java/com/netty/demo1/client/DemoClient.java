@@ -1,8 +1,8 @@
 package com.netty.demo1.client;
 
-import com.netty.demo1.PacketCodeC;
 import com.netty.demo1.coder.PacketDecoder;
 import com.netty.demo1.coder.PacketEncoder;
+import com.netty.demo1.constants.Attributes;
 import com.netty.demo1.packet.LoginRequestPacket;
 import com.netty.demo1.packet.MessageRequestPacket;
 import com.netty.demo1.utils.LoginUtil;
@@ -63,10 +63,12 @@ public class DemoClient {
                 } else {
                     log.info("输入消息发送至服务端: ");
                     Scanner scanner = new Scanner(System.in);
-                    String line = scanner.nextLine();
+                    String userId = scanner.nextLine();
+                    String message = scanner.nextLine();
                     MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                    messageRequestPacket.setMessage(line);
-                    channel.writeAndFlush(PacketCodeC.INSTANCE.encode(channel.alloc(), messageRequestPacket));
+                    messageRequestPacket.setToUserId(Integer.valueOf(userId));
+                    messageRequestPacket.setMessage(message);
+                    channel.writeAndFlush(messageRequestPacket);
                 }
             }
         }).start();

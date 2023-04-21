@@ -14,10 +14,20 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (LoginUtil.hasLogin(ctx.channel())) {
             log.info("认证成功.");
+            ctx.pipeline().remove(this);
             super.channelRead(ctx, msg);
         } else {
             log.info("认证失败, 关闭连接.");
             ctx.channel().close();
+        }
+    }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        if (LoginUtil.hasLogin(ctx.channel())) {
+            log.info("认证成功 auth handler 移除");
+        } else {
+            log.info("未登录验证，关闭连接");
         }
     }
 

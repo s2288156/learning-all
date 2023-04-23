@@ -1,9 +1,9 @@
-package com.netty.demo1.server;
+package com.netty.im.server;
 
-import com.netty.demo1.packet.MessageRequestPacket;
-import com.netty.demo1.packet.MessageResponsePacket;
-import com.netty.demo1.packet.Session;
-import com.netty.demo1.utils.SessionUtil;
+import com.netty.im.packet.MessageRequestPacket;
+import com.netty.im.packet.MessageResponsePacket;
+import com.netty.im.packet.Session;
+import com.netty.im.utils.SessionUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

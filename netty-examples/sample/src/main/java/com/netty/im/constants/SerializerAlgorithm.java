@@ -1,4 +1,4 @@
-package com.netty.demo1.constants;
+package com.netty.im.constants;
 
 /**
  * @author Wu.Chunyang

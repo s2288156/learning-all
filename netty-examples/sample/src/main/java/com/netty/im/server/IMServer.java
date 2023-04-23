@@ -1,7 +1,7 @@
-package com.netty.demo1.server;
+package com.netty.im.server;
 
-import com.netty.demo1.coder.PacketDecoder;
-import com.netty.demo1.coder.PacketEncoder;
+import com.netty.im.coder.PacketDecoder;
+import com.netty.im.coder.PacketEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -12,7 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 /**
  * @author Wu.Chunyang
  */
-public class DemoServer {
+public class IMServer {
     public static void main(String[] args) throws InterruptedException {
         EventLoopGroup boss = new NioEventLoopGroup();
         EventLoopGroup worker = new NioEventLoopGroup();

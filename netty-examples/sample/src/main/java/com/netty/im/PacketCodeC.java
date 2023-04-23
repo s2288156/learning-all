@@ -1,7 +1,7 @@
-package com.netty.demo1;
+package com.netty.im;
 
-import com.netty.demo1.constants.Command;
-import com.netty.demo1.packet.*;
+import com.netty.im.constants.Command;
+import com.netty.im.packet.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 

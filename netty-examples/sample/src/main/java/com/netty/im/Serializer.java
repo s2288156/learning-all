@@ -1,4 +1,4 @@
-package com.netty.demo1;
+package com.netty.im;
 
 /**
  * @author Wu.Chunyang

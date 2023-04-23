@@ -1,7 +1,7 @@
-package com.netty.demo1.server;
+package com.netty.im.server;
 
-import com.netty.demo1.PacketCodeC;
-import com.netty.demo1.packet.*;
+import com.netty.im.PacketCodeC;
+import com.netty.im.packet.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

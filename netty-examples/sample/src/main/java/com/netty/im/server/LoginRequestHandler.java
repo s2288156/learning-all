@@ -1,10 +1,10 @@
-package com.netty.demo1.server;
+package com.netty.im.server;
 
-import com.netty.demo1.packet.LoginRequestPacket;
-import com.netty.demo1.packet.LoginResponsePacket;
-import com.netty.demo1.packet.Session;
-import com.netty.demo1.utils.LoginUtil;
-import com.netty.demo1.utils.SessionUtil;
+import com.netty.im.packet.LoginRequestPacket;
+import com.netty.im.packet.LoginResponsePacket;
+import com.netty.im.packet.Session;
+import com.netty.im.utils.LoginUtil;
+import com.netty.im.utils.SessionUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +32,15 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             loginResponsePacket.setReason("登录失败.");
         }
         ctx.channel().writeAndFlush(loginResponsePacket);
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        if (LoginUtil.hasLogin(ctx.channel())) {
+            Session session = SessionUtil.getSession(ctx.channel());
+            SessionUtil.removeChannel(session);
+            log.info("{} 移除", session);
+        }
     }
 
     private boolean valid(LoginRequestPacket loginRequestPacket) {

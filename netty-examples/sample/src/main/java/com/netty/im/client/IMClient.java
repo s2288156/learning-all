@@ -1,11 +1,10 @@
-package com.netty.demo1.client;
+package com.netty.im.client;
 
-import com.netty.demo1.coder.PacketDecoder;
-import com.netty.demo1.coder.PacketEncoder;
-import com.netty.demo1.constants.Attributes;
-import com.netty.demo1.packet.LoginRequestPacket;
-import com.netty.demo1.packet.MessageRequestPacket;
-import com.netty.demo1.utils.LoginUtil;
+import com.netty.im.coder.PacketDecoder;
+import com.netty.im.coder.PacketEncoder;
+import com.netty.im.packet.LoginRequestPacket;
+import com.netty.im.packet.MessageRequestPacket;
+import com.netty.im.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -15,6 +14,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @author Wu.Chunyang
  */
 @Slf4j
-public class DemoClient {
+public class IMClient {
     public static void main(String[] args) throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
@@ -59,24 +59,30 @@ public class DemoClient {
                     login.setUsername(username);
                     login.setPassword("pwd");
                     channel.writeAndFlush(login);
-                    waitResponse();
                 } else {
-                    log.info("输入消息发送至服务端: ");
+                    System.out.println("输入消息发送至服务端，命令格式: [userId] [message]");
                     Scanner scanner = new Scanner(System.in);
-                    String userId = scanner.nextLine();
-                    String message = scanner.nextLine();
-                    MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                    messageRequestPacket.setToUserId(Integer.valueOf(userId));
-                    messageRequestPacket.setMessage(message);
-                    channel.writeAndFlush(messageRequestPacket);
+                    String cmd = scanner.nextLine();
+                    String[] commands = StringUtils.split(cmd, " ");
+                    if (commands == null || commands.length != 2) {
+                        System.out.println("命令格式错误，请重新输入.");
+                    } else {
+                        String userId = commands[0];
+                        String message = commands[1];
+                        MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+                        messageRequestPacket.setToUserId(Integer.valueOf(userId));
+                        messageRequestPacket.setMessage(message);
+                        channel.writeAndFlush(messageRequestPacket);
+                    }
                 }
+                waitResponse();
             }
         }).start();
     }
 
     private static void waitResponse() {
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

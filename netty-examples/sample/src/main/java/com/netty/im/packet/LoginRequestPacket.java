@@ -1,6 +1,6 @@
-package com.netty.demo1.packet;
+package com.netty.im.packet;
 
-import com.netty.demo1.constants.Command;
+import com.netty.im.constants.Command;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

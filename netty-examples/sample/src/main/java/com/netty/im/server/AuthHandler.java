@@ -1,8 +1,8 @@
-package com.netty.demo1.server;
+package com.netty.im.server;
 
-import com.netty.demo1.packet.Session;
-import com.netty.demo1.utils.LoginUtil;
-import com.netty.demo1.utils.SessionUtil;
+import com.netty.im.packet.Session;
+import com.netty.im.utils.LoginUtil;
+import com.netty.im.utils.SessionUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +29,6 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
         if (LoginUtil.hasLogin(ctx.channel())) {
             Session session = SessionUtil.getSession(ctx.channel());
             log.info("{} auth handler 移除", session);
-            SessionUtil.removeChannel(session);
-            log.info("{} 移除", session);
         } else {
             log.info("未登录连接关闭.");
         }

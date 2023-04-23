@@ -1,7 +1,7 @@
-package com.netty.demo1.utils;
+package com.netty.im.utils;
 
-import com.netty.demo1.constants.Attributes;
-import com.netty.demo1.packet.Session;
+import com.netty.im.constants.Attributes;
+import com.netty.im.packet.Session;
 import io.netty.channel.Channel;
 
 import java.util.Map;

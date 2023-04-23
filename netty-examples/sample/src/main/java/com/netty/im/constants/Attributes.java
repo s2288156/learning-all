@@ -1,6 +1,6 @@
-package com.netty.demo1.constants;
+package com.netty.im.constants;
 
-import com.netty.demo1.packet.Session;
+import com.netty.im.packet.Session;
 import io.netty.util.AttributeKey;
 
 /**

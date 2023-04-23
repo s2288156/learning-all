@@ -51,31 +51,16 @@ public class IMClient {
     private static void startConsoleTread(Channel channel) {
         new Thread(() -> {
             while (!Thread.interrupted()) {
-                if (!LoginUtil.hasLogin(channel)) {
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("请输入用户名登录: ");
-                    String username = scanner.nextLine();
-                    LoginRequestPacket login = new LoginRequestPacket();
-                    login.setUsername(username);
-                    login.setPassword("pwd");
-                    channel.writeAndFlush(login);
-                } else {
-                    System.out.println("输入消息发送至服务端，命令格式: [userId] [message]");
-                    Scanner scanner = new Scanner(System.in);
-                    String cmd = scanner.nextLine();
-                    String[] commands = StringUtils.split(cmd, " ");
-                    if (commands == null || commands.length != 2) {
-                        System.out.println("命令格式错误，请重新输入.");
+                try {
+                    if (!LoginUtil.hasLogin(channel)) {
+                        loginCmd(channel);
                     } else {
-                        String userId = commands[0];
-                        String message = commands[1];
-                        MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
-                        messageRequestPacket.setToUserId(Integer.valueOf(userId));
-                        messageRequestPacket.setMessage(message);
-                        channel.writeAndFlush(messageRequestPacket);
+                        sendMessageCmd(channel);
                     }
+                    waitResponse();
+                } catch (Exception e) {
+                    log.error("", e);
                 }
-                waitResponse();
             }
         }).start();
     }
@@ -85,6 +70,33 @@ public class IMClient {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private static void loginCmd(Channel channel) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入用户名登录: ");
+        String username = scanner.nextLine();
+        LoginRequestPacket login = new LoginRequestPacket();
+        login.setUsername(username);
+        login.setPassword("pwd");
+        channel.writeAndFlush(login);
+    }
+
+    private static void sendMessageCmd(Channel channel) {
+        System.out.println("输入消息发送至服务端，命令格式: [userId] [message]");
+        Scanner scanner = new Scanner(System.in);
+        String cmd = scanner.nextLine();
+        String[] commands = StringUtils.split(cmd, " ");
+        if (commands == null || commands.length != 2) {
+            System.out.println("命令格式错误，请重新输入.");
+        } else {
+            String userId = commands[0];
+            String message = commands[1];
+            MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+            messageRequestPacket.setToUserId(Integer.valueOf(userId));
+            messageRequestPacket.setMessage(message);
+            channel.writeAndFlush(messageRequestPacket);
         }
     }
 }

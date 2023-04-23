@@ -1,6 +1,8 @@
 package com.netty.demo1.server;
 
+import com.netty.demo1.packet.Session;
 import com.netty.demo1.utils.LoginUtil;
+import com.netty.demo1.utils.SessionUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,6 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
         if (LoginUtil.hasLogin(ctx.channel())) {
             log.info("认证成功.");
             ctx.channel().pipeline().remove(this);
-            // ctx.pipeline().remove(this);
             super.channelRead(ctx, msg);
         } else {
             log.info("认证失败, 关闭连接.");
@@ -26,9 +27,12 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         if (LoginUtil.hasLogin(ctx.channel())) {
-            log.info("认证成功 auth handler 移除");
+            Session session = SessionUtil.getSession(ctx.channel());
+            log.info("{} auth handler 移除", session);
+            SessionUtil.removeChannel(session);
+            log.info("{} 移除", session);
         } else {
-            log.info("未登录验证，关闭连接");
+            log.info("未登录连接关闭.");
         }
     }
 

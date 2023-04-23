@@ -21,13 +21,4 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         }
     }
 
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        // log.info("开始登录...");
-        // LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
-        // loginRequestPacket.setUserId(1);
-        // loginRequestPacket.setUsername("laowang");
-        // loginRequestPacket.setPassword("112233");
-        // ctx.channel().writeAndFlush(loginRequestPacket);
-    }
 }

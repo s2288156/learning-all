@@ -4,6 +4,7 @@ import com.netty.demo1.packet.MessageRequestPacket;
 import com.netty.demo1.packet.MessageResponsePacket;
 import com.netty.demo1.packet.Session;
 import com.netty.demo1.utils.SessionUtil;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,12 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
         MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
         messageResponsePacket.setFromUserId(session.getUserId());
         messageResponsePacket.setMessage("服务端回复【" + msg.getMessage() + "】");
-        // ctx.channel().writeAndFlush(messageResponsePacket);
-        SessionUtil.getChannel(msg.getToUserId()).writeAndFlush(messageResponsePacket);
+        // 通过toUserId获取消息接收方channel，将消息发送出去
+        Channel toChannel = SessionUtil.getChannel(msg.getToUserId());
+        if (toChannel != null) {
+            toChannel.writeAndFlush(messageResponsePacket);
+        } else {
+            log.error("userId: {}, 未登录.", msg.getToUserId());
+        }
     }
 }

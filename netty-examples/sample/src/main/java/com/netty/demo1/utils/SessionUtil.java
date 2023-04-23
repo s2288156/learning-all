@@ -31,4 +31,10 @@ public class SessionUtil {
     public static Channel getChannel(Integer toUserId) {
         return userIdChannelStore.get(toUserId);
     }
+
+    public static void removeChannel(Session session) {
+        if (session != null) {
+            userIdChannelStore.remove(session.getUserId());
+        }
+    }
 }

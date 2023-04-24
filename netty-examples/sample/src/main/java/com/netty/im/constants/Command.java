@@ -8,6 +8,4 @@ public class Command {
     public static final Byte LOGIN_RESPONSE = 2;
     public static final Byte MESSAGE_REQUEST = 3;
     public static final Byte MESSAGE_RESPONSE = 4;
-    public static final Byte LOGOUT_REQUEST = 5;
-    public static final Byte LOGOUT_RESPONSE = 6;
 }

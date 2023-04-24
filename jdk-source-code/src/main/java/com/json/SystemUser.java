@@ -14,9 +14,4 @@ public class SystemUser implements User {
 
     public SystemUser() {
     }
-
-    public SystemUser(String username, Integer age) {
-        this.username = username;
-        this.age = age;
-    }
 }

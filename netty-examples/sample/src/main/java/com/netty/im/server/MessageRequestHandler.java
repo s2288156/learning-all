@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRequestPacket> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket msg) {
         Session session = SessionUtil.getSession(ctx.channel());
         log.info("收到客户端{}消息: {}", session.getUserId(), msg.getMessage());
         MessageResponsePacket messageResponsePacket = new MessageResponsePacket();

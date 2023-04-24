@@ -14,13 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf byteBuf = (ByteBuf) msg;
         Packet packet = PacketCodeC.INSTANCE.decode(byteBuf);
         if (packet instanceof LoginRequestPacket loginRequestPacket) {
             LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
             loginResponsePacket.setVersion(packet.getVersion());
-            if (valid(loginRequestPacket)) {
+            if (valid()) {
                 log.info("登录验证通过: {}", loginRequestPacket);
                 loginResponsePacket.setSuccess(true);
                 loginResponsePacket.setReason("登录成功.");
@@ -41,7 +41,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
-    private boolean valid(LoginRequestPacket loginRequestPacket) {
+    private boolean valid() {
         return true;
     }
 }

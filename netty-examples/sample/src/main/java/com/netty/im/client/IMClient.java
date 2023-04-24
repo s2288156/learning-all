@@ -31,7 +31,7 @@ public class IMClient {
                 .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
+                    protected void initChannel(SocketChannel ch) {
                         ch.pipeline()
                                 .addLast(new PacketDecoder())
                                 .addLast(new LoginResponseHandler())

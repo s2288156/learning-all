@@ -13,7 +13,7 @@ import java.text.MessageFormat;
 @Slf4j
 public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageResponsePacket> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, MessageResponsePacket msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, MessageResponsePacket msg) {
         System.out.println(MessageFormat.format("收到服务端[{0}]消息: {1}", msg.getFromUserId(), msg.getMessage()));
     }
 }

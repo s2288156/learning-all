@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LoginResponsePacket msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, LoginResponsePacket msg) {
         if (msg.isSuccess()) {
             log.info("{}", msg.getReason());
             LoginUtil.markAsLogin(ctx.channel(), msg.getUserId());

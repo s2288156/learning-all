@@ -15,10 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket msg) {
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         loginResponsePacket.setVersion(msg.getVersion());
-        if (valid(msg)) {
+        if (valid()) {
             log.info("登录验证通过: {}", msg);
             Session session = SessionUtil.newSession(msg.getUsername());
             SessionUtil.bindSession(session, ctx.channel());
@@ -35,7 +35,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
     }
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    public void channelInactive(ChannelHandlerContext ctx) {
         if (LoginUtil.hasLogin(ctx.channel())) {
             Session session = SessionUtil.getSession(ctx.channel());
             SessionUtil.removeChannel(session);
@@ -43,7 +43,7 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         }
     }
 
-    private boolean valid(LoginRequestPacket loginRequestPacket) {
+    private boolean valid() {
         return true;
     }
 }

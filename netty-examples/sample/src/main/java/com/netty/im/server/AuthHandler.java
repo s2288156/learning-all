@@ -25,7 +25,7 @@ public class AuthHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+    public void handlerRemoved(ChannelHandlerContext ctx) {
         if (LoginUtil.hasLogin(ctx.channel())) {
             Session session = SessionUtil.getSession(ctx.channel());
             log.info("{} auth handler 移除", session);

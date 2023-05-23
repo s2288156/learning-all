@@ -1,12 +1,14 @@
 package com.netty.tcp;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +29,8 @@ public class TcpClient {
                         ch.pipeline()
                                 .addLast(new StringDecoder())
                                 .addLast(new TcpClientHandler())
-                                .addLast(new StringEncoder());
+                                .addLast(new StringEncoder())
+                                .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, false, Unpooled.wrappedBuffer("ETX".getBytes())));
                     }
                 });
         Channel channel = null;

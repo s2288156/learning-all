@@ -27,13 +27,13 @@ public class SimpleServer {
                     .option(ChannelOption.SO_BACKLOG, 128)
 //                    .childOption(ChannelOption.SO_KEEPALIVE, true)
 //                    .childOption(ChannelOption.TCP_NODELAY, true)
-                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .handler(simpleServerHandler)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            ChannelPipeline pipeline = socketChannel.pipeline();
-                            pipeline.addLast(new NetWorkDecoder());
-                            pipeline.addLast(simpleServerHandler);
+                            // ChannelPipeline pipeline = socketChannel.pipeline();
+                            // pipeline.addLast(new NetWorkDecoder());
+                            // pipeline.addLast(simpleServerHandler);
                         }
                     });
 

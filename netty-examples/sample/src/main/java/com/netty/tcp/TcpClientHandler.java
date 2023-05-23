@@ -8,10 +8,9 @@ import lombok.extern.slf4j.Slf4j;
  * @author Wu.Chunyang
  */
 @Slf4j
-public class TcpServerHandler extends SimpleChannelInboundHandler<String> {
-
+public class TcpClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.println(msg);
+        log.info("client read: {}", msg);
     }
 }

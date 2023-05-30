@@ -1,4 +1,4 @@
-package com.spi;
+package com.spi.logger;
 
 /**
  * @author Wu.Chunyang

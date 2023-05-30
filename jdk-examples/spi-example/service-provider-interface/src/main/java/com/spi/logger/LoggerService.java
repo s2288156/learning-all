@@ -1,4 +1,4 @@
-package com.spi;
+package com.spi.logger;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,6 +12,7 @@
         <module>jdk-source-code</module>
         <module>flink-example</module>
         <module>design-pattern</module>
+        <module>jdk-examples</module>
     </modules>
 
     <groupId>leetcode</groupId>

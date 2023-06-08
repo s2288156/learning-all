@@ -1,3 +1,5 @@
 spring:
   application:
     name: web-demo
+  main:
+    allow-circular-references: true

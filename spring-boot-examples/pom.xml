@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>web-example</module>
+        <module>flowable-example</module>
     </modules>
 
     <artifactId>spring-boot-examples</artifactId>

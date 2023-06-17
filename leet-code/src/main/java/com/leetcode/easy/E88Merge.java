@@ -4,23 +4,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.leetcode.utils.JacksonUtils;
 import lombok.Data;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Wu.Chunyang
  */
 public class E88Merge {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        run(nums1, m, nums2, n);
-    }
 
-    private void run(int[] nums1, int m, int[] nums2, int n) {
+    private static void run(int[] nums1, int m, int[] nums2, int n) {
         int p1 = m - 1, p2 = n - 1;
         int tail = m + n - 1;
         while (p1 >= 0 || p2 >= 0) {
@@ -51,8 +43,7 @@ public class E88Merge {
         int[] num2 = mergeParam.getNum2();
         int n = mergeParam.getN();
         int[] expectedNum = mergeParam.getExpectedNum();
-        E88Merge solution = new E88Merge();
-        solution.merge(num1, m, num2, n);
+        run(num1, m, num2, n);
         Assertions.assertEquals(expectedNum.length, num1.length);
         for (int i = 0; i < expectedNum.length; i++) {
             Assertions.assertEquals(expectedNum[i], num1[i]);

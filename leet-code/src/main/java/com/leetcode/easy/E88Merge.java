@@ -21,19 +21,17 @@ public class E88Merge {
     }
 
     private void run(int[] nums1, int m, int[] nums2, int n) {
-        if (m == 0) {
-            System.arraycopy(nums2, 0, nums1, 0, nums2.length);
-            return;
-        }
-        for (int i = m - 1; i >= 0; i--) {
-            for (int j = n - 1; j >= 0; j--) {
-                if (nums2[j] >= nums1[i]) {
-                    nums1[i + j + 1] = nums2[j];
-                    n--;
-                } else {
-                    nums1[i + j + 1] = nums1[i];
-                    break;
-                }
+        int p1 = m - 1, p2 = n - 1;
+        int tail = m + n - 1;
+        while (p1 >= 0 || p2 >= 0) {
+            if (p1 == -1) {
+                nums1[tail--] = nums2[p2--];
+            } else if (p2 == -1) {
+                nums1[tail--] = nums1[p1--];
+            } else if (nums1[p1] <= nums2[p2]) {
+                nums1[tail--] = nums2[p2--];
+            } else {
+                nums1[tail--] = nums1[p1--];
             }
         }
     }
@@ -41,8 +39,10 @@ public class E88Merge {
     @ParameterizedTest
     @ValueSource(strings = {
             "{\"num1\":[1,2,3,0,0,0],\"m\":3,\"n\":3,\"num2\":[2,5,6],\"expectedNum\":[1,2,2,3,5,6]}",
+            "{\"num1\":[4,5,6,0,0,0],\"m\":3,\"n\":3,\"num2\":[1,2,3],\"expectedNum\":[1,2,3,4,5,6]}",
             "{\"num1\":[0],\"m\":0,\"n\":1,\"num2\":[1],\"expectedNum\":[1]}",
             "{\"num1\":[1],\"m\":1,\"n\":0,\"num2\":[],\"expectedNum\":[1]}",
+            "{\"num1\":[2,0],\"m\":1,\"n\":1,\"num2\":[1],\"expectedNum\":[1,2]}",
     })
     void test_case(String paramObjects) throws JsonProcessingException {
         MergeParam mergeParam = JacksonUtils.getObjectMapper().readValue(paramObjects, MergeParam.class);

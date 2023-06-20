@@ -3,7 +3,7 @@ package org.g.grpc.client;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.g.grpc.api.GreeterApiGrpc;
+import org.g.grpc.api.GreeterGrpc;
 import org.g.grpc.api.HelloReply;
 import org.g.grpc.api.HelloRequest;
 
@@ -19,10 +19,10 @@ public class HelloWorldClient {
         client.greet("Zhang San");
     }
 
-    private final GreeterApiGrpc.GreeterApiBlockingStub blockingStub;
+    private final GreeterGrpc.GreeterBlockingStub blockingStub;
 
     public HelloWorldClient(Channel channel) {
-        blockingStub = GreeterApiGrpc.newBlockingStub(channel);
+        blockingStub = GreeterGrpc.newBlockingStub(channel);
     }
 
     public void greet(String name) {

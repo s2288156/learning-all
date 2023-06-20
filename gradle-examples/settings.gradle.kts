@@ -5,6 +5,7 @@ dependencyResolutionManagement {
         create("libs") {
             library("grpc-protobuf", "io.grpc:grpc-protobuf:1.56.0")
             library("grpc-stub", "io.grpc:grpc-stub:1.56.0")
+            library("grpc-netty-shaded", "io.grpc:grpc-netty-shaded:1.56.0")
         }
     }
 }

@@ -10,6 +10,7 @@ dependencies {
     implementation(libs.grpc.stub)
     implementation("com.google.protobuf:protobuf-java:3.23.2")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
+    runtimeOnly(libs.grpc.netty.shaded)
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

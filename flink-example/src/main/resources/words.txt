@@ -1,7 +1,0 @@
-Hello Word
-Hello Golang
-Hello Java
-Best PHP
-Golang YYDS
-Java Good
-PHP YYDS

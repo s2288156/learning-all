@@ -6,22 +6,34 @@
   <style>
       #d1 {
           color: red;
+          font-weight: 900;
       }
 
       div {
-          font-size: 22px;
+          font-size: 42px;
           color: green;
+          text-transform: capitalize;
       }
 
-      h1, p {
+      h1 {
           color: blue;
+      }
+      .border {
+          border: 1px solid red;
+      }
+      .border1 {
+          /* solid实线, dashed虚线 */
+          border-style: dashed;
+          border-width: 1px;
+          border-color: green;
       }
   </style>
 </head>
 <body>
 <div id="d1">Hello world</div>
-<h1>Hello world</h1>
-<p>Hello world</p>
-<div id="d2">Hello world</div>
+<div id="d2">hi: Hello world</div>
+<h1>hi: Hello world</h1>
+<p class="border">Hello world</p>
+<p class="border1">Hello world</p>
 </body>
 </html>

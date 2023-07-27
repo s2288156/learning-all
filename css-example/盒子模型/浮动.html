@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      .outer {
+          width: 500px;
+          background-color: gray;
+          border: black 1px solid;
+          /*overflow: hidden;*/
+      }
+
+      .box {
+          width: 100px;
+          height: 100px;
+          margin: 10px;
+          background-color: green;
+      }
+      .a,.b,.c {
+          float: left;
+      }
+      .outer::after {
+          content: '';
+          display: block;
+          clear: both;
+      }
+
+  </style>
+</head>
+<body>
+<div class="outer">
+  <div class="box a">a</div>
+  <div class="box b">b</div>
+  <div class="box c">c</div>
+</div>
+<!--<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aut consequatur culpa cum cumque deleniti, dicta distinctio enim ex facere fugiat id inventore ipsa iste laboriosam magni molestias necessitatibus nisi non nulla perspiciatis placeat quas qui quia, ratione repellat rerum sequi sint sunt tempora tenetur totam unde vel vitae voluptas voluptates voluptatibus? Aut, doloribus ea enim maiores nulla possimus? A alias aliquid cumque delectus deserunt eos fugiat, ipsa magnam mollitia nulla odio, odit perspiciatis quibusdam repellendus rerum tempora totam veniam! Amet animi assumenda aut corporis culpa cupiditate dolores, eius eveniet exercitationem, facilis id illum incidunt ipsa mollitia numquam praesentium quae, quasi quo quod reiciendis suscipit vero voluptas! Accusantium animi, autem dolores eius eligendi eos, eum ex expedita facere fuga illo incidunt ipsa mollitia neque nisi nobis placeat quasi quidem quos ratione reiciendis rem rerum soluta tempore veritatis vero vitae voluptas. Assumenda atque consectetur debitis dignissimos distinctio esse eum fuga illo itaque labore laborum magni modi porro quasi, qui quod reprehenderit rerum sunt ullam, voluptate. Dolorem magni minima modi nulla, repellendus suscipit. Amet dolorem eaque inventore sunt tempore? Corporis enim illum maiores reiciendis rerum sequi sint, voluptate. Aperiam assumenda beatae culpa delectus dolor, harum ipsum itaque, molestiae mollitia nam, necessitatibus officia perspiciatis placeat quod temporibus! A accusamus adipisci aliquam amet aperiam architecto consectetur consequatur eaque et fugiat id iste laboriosam laudantium minus nam odio, perspiciatis quos recusandae rem sed soluta sunt ullam vel, veniam, voluptates. Eaque laboriosam, quae! Animi assumenda beatae consectetur dignissimos dolorum ducimus esse exercitationem itaque iusto libero minima nemo nostrum nulla perferendis, qui quia quos sequi, sint veniam voluptatum? A accusamus alias autem blanditiis commodi consequuntur, eveniet facilis ipsa itaque labore libero, neque nihil nostrum odit quaerat quis unde. Debitis dolorum eius ex fugiat fugit, ipsam itaque molestiae, nisi odit ratione saepe, sapiente soluta sunt suscipit vitae voluptatibus!</div>-->
+</body>
+</html>

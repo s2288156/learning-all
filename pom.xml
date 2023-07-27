@@ -12,12 +12,8 @@
     </parent>
     <modules>
         <module>leet-code</module>
-        <module>dubbo-examples</module>
         <module>netty-examples</module>
         <module>spring-boot-examples</module>
-        <module>jdk-source-code</module>
-        <module>flink-example</module>
-        <module>jdk-examples</module>
     </modules>
 
     <groupId>leetcode</groupId>

@@ -1,4 +1,4 @@
-package com.juc.sync;
+package com.juc.clock;
 
 /**
  * @author Wu.Chunyang

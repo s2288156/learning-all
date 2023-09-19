@@ -5,7 +5,7 @@ package com.juc.sync;
  */
 public class SynchronizedDemo {
 
-    private Object object = new Object();
+    private final Object object = new Object();
 
     public void syncCodeBock() {
         synchronized (object) {
@@ -13,5 +13,12 @@ public class SynchronizedDemo {
         }
     }
 
-    
+    public synchronized void syncMethod() {
+        System.out.println("sync method ---------------------");
+    }
+
+    public static synchronized void syncStaticMethod() {
+        System.out.println("sync static method --------------");
+    }
+
 }

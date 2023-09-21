@@ -1,4 +1,4 @@
-package com.juc.clock;
+package com.juc.lock;
 
 import lombok.extern.slf4j.Slf4j;
 

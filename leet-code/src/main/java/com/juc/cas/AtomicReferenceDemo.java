@@ -1,7 +1,5 @@
 package com.juc.cas;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -29,12 +27,3 @@ public class AtomicReferenceDemo {
     }
 }
 
-@AllArgsConstructor
-@Data
-class User {
-
-    private String name;
-
-    private Integer age;
-
-}

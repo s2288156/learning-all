@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Wu.Chunyang
  */
-public abstract class BaseDemo {
+public abstract class BaseJuc {
 
     public static void sleepSec(int n) {
         try {

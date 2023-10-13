@@ -1,6 +1,6 @@
 package com.juc.lock;
 
-import com.juc.BaseDemo;
+import com.juc.BaseJuc;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.locks.Condition;
@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Wu.Chunyang
  */
 @Slf4j
-public class LockSupportDemo extends BaseDemo {
+public class LockSupportDemo extends BaseJuc {
     public static void main(String[] args) {
         // 使用wait() notify()必须在同步代码块中调用，否则会抛异常
         // error_must_has_lock();

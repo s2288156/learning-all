@@ -56,7 +56,7 @@ public class PerformanceTestPlus {
         }
         countDownLatch2.await();
         end = System.currentTimeMillis();
-        log.info("atomicNum: \t\t{} ms, result = {}", end - start, num);
+        log.info("atomicNum: \t\t{} ms, result = {}", end - start, atomicNum.get());
 
         CountDownLatch countDownLatch3 = new CountDownLatch(threadNum);
         start = System.currentTimeMillis();
@@ -70,7 +70,7 @@ public class PerformanceTestPlus {
         }
         countDownLatch3.await();
         end = System.currentTimeMillis();
-        log.info("adderNum: \t\t{} ms, result = {}", end - start, num);
+        log.info("adderNum: \t\t{} ms, result = {}", end - start, adderNum.sum());
 
         CountDownLatch countDownLatch4 = new CountDownLatch(threadNum);
         start = System.currentTimeMillis();
@@ -84,6 +84,6 @@ public class PerformanceTestPlus {
         }
         countDownLatch4.await();
         end = System.currentTimeMillis();
-        log.info("accumulatorNum: \t{} ms, result = {}", end - start, num);
+        log.info("accumulatorNum: \t{} ms, result = {}", end - start, accumulatorNum.get());
     }
 }

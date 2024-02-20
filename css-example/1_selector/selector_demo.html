@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css selector</title>
+  <style>
+      * {
+          margin: 5px;
+      }
+
+      .box {
+          border: 4px solid black;
+          padding: 5px;
+      }
+
+      .box.warning {
+          border-color: darkorange;
+          font-weight: bold;
+      }
+
+      .box.danger {
+          border-color: red;
+      }
+      .box :hover{
+          font-size: 40px;
+      }
+  </style>
+</head>
+<body>
+<div>
+  <div class="box">
+    <p>Hello word.</p>
+    <p>This is an informational note.</p>
+    <p>ha ha ha</p>
+  </div>
+  <div class="box warning">
+    <p>Hello word.</p>
+    This note show a warning.
+  </div>
+  <div class="box danger">
+    This note show a danger.
+  </div>
+  <div class="danger">
+    This won't get style - It also needs to have the box class.
+  </div>
+</div>
+</body>
+</html>

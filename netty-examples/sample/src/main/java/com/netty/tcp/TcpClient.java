@@ -29,8 +29,8 @@ public class TcpClient {
                         ch.pipeline()
                                 .addLast(new StringDecoder())
                                 .addLast(new TcpClientHandler())
-                                .addLast(new StringEncoder())
-                                .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, false, Unpooled.wrappedBuffer("ETX".getBytes())));
+                                .addLast(new StringEncoder());
+                                // .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, false, Unpooled.wrappedBuffer("ETX".getBytes())));
                     }
                 });
         Channel channel = null;

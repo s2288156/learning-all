@@ -14,9 +14,11 @@ public class TcpServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ch.pipeline()
-                .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, false, Unpooled.wrappedBuffer("ETX".getBytes())))
-                .addLast(new StringDecoder())
-                .addLast(new TcpServerHandler())
+                .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, true, Unpooled.wrappedBuffer("STX".getBytes())))
+                .addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE, true, Unpooled.wrappedBuffer("ETX".getBytes())))
+                // .addLast(new StringDecoder())
+                // .addLast(new TcpServerHandler())
+                .addLast(new TcpByteServerHandler())
                 .addLast(new StringEncoder());
         // .addLast(new DnsTcpServerHandler());
     }

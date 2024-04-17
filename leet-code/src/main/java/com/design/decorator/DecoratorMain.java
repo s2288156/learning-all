@@ -1,5 +1,10 @@
 package com.design.decorator;
 
+import com.design.decorator.beverage.Beverage;
+import com.design.decorator.beverage.Lemon;
+import com.design.decorator.beverage.Mongo;
+import com.design.decorator.beverage.RedTea;
+
 /**
  * @author Wu.Chunyang
  */

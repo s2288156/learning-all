@@ -18,17 +18,9 @@
         </dependency>
 
         <dependency>
-            <groupId>de.beckhoff</groupId>
-            <artifactId>jni</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/TcJavaToAds.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.plc4x</groupId>
-            <artifactId>plc4j-driver-ads</artifactId>
-            <version>0.12.0</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.2.1-jre</version>
         </dependency>
 
         <dependency>

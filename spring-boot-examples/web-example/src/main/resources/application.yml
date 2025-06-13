@@ -3,3 +3,5 @@ spring:
     name: web-demo
   main:
     allow-circular-references: true
+server:
+  port: 8888

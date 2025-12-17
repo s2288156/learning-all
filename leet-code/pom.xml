@@ -3,13 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>all</artifactId>
-        <groupId>leetcode</groupId>
-        <version>1.0.0</version>
+        <groupId>com.all</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>leet-code</artifactId>
+
+    <properties>
+
+    </properties>
 
     <dependencies>
         <dependency>
@@ -27,7 +31,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
+            <version>2.14.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>

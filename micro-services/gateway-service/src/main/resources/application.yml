@@ -1,0 +1,32 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: web-example
+              uri: http://localhost:8888
+              predicates:
+                - Path=/api/**
+              filters:
+                - StripPrefix=0
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://47.113.227.247:18080/realms/my-realm/protocol/openid-connect/certs
+          issuer-uri: http://47.113.227.247:18080/realms/my-realm
+
+#keycloak:
+#  realm: my-realm
+#  auth-server-url: http://47.113.227.247:18080/realms/my-realm
+#  resource: gateway-client
+#  credentials:
+#    secret: gateway-client-secret
+#  ssl-required: none
+#  use-resource-role-mappings: true
+#  bearer-only: true # 网关只做Bearer token校验，不做登录页跳转

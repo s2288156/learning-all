@@ -12,6 +12,7 @@
     <modules>
         <module>gateway-service</module>
         <module>auth-service</module>
+        <module>user-service</module>
     </modules>
 
     <artifactId>micro-services</artifactId>

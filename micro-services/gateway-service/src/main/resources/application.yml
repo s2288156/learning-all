@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+  main:
+    web-application-type: reactive
   application:
     name: gateway
   cloud:
@@ -18,8 +20,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://47.113.227.247:18080/realms/my-realm/protocol/openid-connect/certs
-          issuer-uri: http://47.113.227.247:18080/realms/my-realm
+          jwk-set-uri: http://47.113.227.247:18080/realms/microservice/protocol/openid-connect/certs
+          issuer-uri: http://47.113.227.247:18080/realms/microservice
 
 #keycloak:
 #  realm: my-realm

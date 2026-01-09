@@ -1,5 +1,18 @@
 server:
   port: 9001
+  servlet:
+    context-path: /auth
 spring:
   application:
     name: auth
+
+keycloak:
+  auth-server-url: http://47.113.227.247:18080
+  realm: microservice
+  client:
+    id: demo-client
+    secret: xDv2VeZYGeoBYjIoAdHmLqgfaeVZg5wX
+  admin:
+    username: admin
+    password: admin
+

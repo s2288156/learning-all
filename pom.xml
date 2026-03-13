@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.8</version>
+        <version>4.0.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
@@ -25,7 +25,7 @@
         <java.version>21</java.version>
         <skipTests>true</skipTests>
 
-        <spring-cloud.version>2025.0.1</spring-cloud.version>
+        <spring-cloud.version>2025.1.1</spring-cloud.version>
         <commons-lang3.version>3.18.0</commons-lang3.version>
         <keycloak.springboot.version>25.0.3</keycloak.springboot.version>
         <keycloak-admin-client.version>26.0.7</keycloak-admin-client.version>

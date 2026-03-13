@@ -1,7 +1,7 @@
 server:
   port: 9001
   servlet:
-    context-path: /auth
+    context-path: /api/auth
 spring:
   application:
     name: auth
@@ -11,7 +11,7 @@ keycloak:
   realm: microservice
   client:
     id: demo-client
-    secret: xDv2VeZYGeoBYjIoAdHmLqgfaeVZg5wX
+    secret: nbNSPDx6bwQ7j5LXQ9eV31cXHfgHmZ6Z
   admin:
     username: admin
     password: admin
